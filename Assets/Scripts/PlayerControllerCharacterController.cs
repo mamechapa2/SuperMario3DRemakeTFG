@@ -20,7 +20,11 @@ public class PlayerControllerCharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
+        //moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
+        float moveDirectionY = moveDirection.y;
+        moveDirection = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"));
+        moveDirection = moveDirection.normalized * moveSpeed;
+        moveDirection.y = moveDirectionY; 
 
         if (characterController.isGrounded)
         {
