@@ -575,6 +575,9 @@ MonoBehaviour:
   useOffset: 0
   rotationSpeed: 2
   rotationPoint: {fileID: 890566856}
+  maxCameraAngle: 65
+  minCameraAngle: -60
+  invertYAxis: 0
 --- !u!1 &1150141429
 GameObject:
   m_ObjectHideFlags: 0
