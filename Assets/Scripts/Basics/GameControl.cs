@@ -8,21 +8,25 @@ public class GameControl : MonoBehaviour
 {
     //Vidas
     public int startingLives = 3;
-    private int internalLives;
+    private static int internalLives;
     private GameObject livesDisplay;
 
     //Monedas
-    private int internalCoins = 0;
+    private static int internalCoins = 0;
     private GameObject coinsDisplay;
 
     //Estrellas
-    private int internalStars = 0;
+    private static int internalStars = 0;
     private GameObject starsDisplay;
 
     //Timer
     public int startingTime = 300;
-    private float internalTime;
+    private static float internalTime;
     private GameObject timeDisplay;
+
+    //LevelControl
+    public int numMaxLevel;
+    public int numWorlds;
 
     // Start is called before the first frame update
     void Start()
@@ -58,44 +62,45 @@ public class GameControl : MonoBehaviour
     }
 
     //Vidas
-    public void decreaseLives()
+    public static void decreaseLives()
     {
         internalLives--;
 
-        if(internalLives == 0)
+        if (internalLives == 0)
         {
             //TODO FIN DE JUEGO
+            Debug.Log("FIN DEL JUEGO");
         }
     }
 
-    public void increaseLives()
+    public static void increaseLives()
     {
         internalLives++;
     } 
 
     //Monedas
-    public void decreaseCoins()
+    public static void decreaseCoins()
     {
         internalCoins--;
     }
 
-    public void increaseCoins()
+    public static void increaseCoins()
     {
         internalCoins++;
     }
 
     //Estrellas
-    public void decreaseStars()
+    public static void decreaseStars()
     {
         internalStars--;
     }
 
-    public void increaseStars()
+    public static void increaseStars()
     {
         internalStars++;
     }
 
-    private void updateTimer()
+    private static void updateTimer()
     {
         internalTime -= Time.deltaTime;
         if (internalTime < 0)
