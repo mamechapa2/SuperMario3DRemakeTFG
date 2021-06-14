@@ -10,19 +10,34 @@ public class GameControl : MonoBehaviour
     private int internalLives;
     private GameObject livesDisplay;
 
+    //Monedas
+    private int internalCoins = 0;
+    private GameObject coinsDisplay;
+
     // Start is called before the first frame update
     void Start()
     {
+        //Vidas
         internalLives = startingLives;
         livesDisplay = GameObject.Find("LivesDisplay").gameObject;
+
+        //Monedas
+        coinsDisplay = GameObject.Find("CoinsDisplay").gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateLivesDisplay();
+        updateDisplays();
     }
 
+    private void updateDisplays()
+    {
+        livesDisplay.GetComponent<Text>().text = "" + internalLives;
+        coinsDisplay.GetComponent<Text>().text = "" + internalCoins;
+    }
+
+    //Vidas
     public void decreaseLives()
     {
         internalLives--;
@@ -36,10 +51,16 @@ public class GameControl : MonoBehaviour
     public void increaseLives()
     {
         internalLives++;
+    } 
+
+    //Monedas
+    public void decreaseCoins()
+    {
+        internalCoins--;
     }
 
-    private void updateLivesDisplay()
+    public void increaseCoins()
     {
-        livesDisplay.GetComponent<Text>().text = "" + internalLives;
+        internalCoins++;
     }
 }
