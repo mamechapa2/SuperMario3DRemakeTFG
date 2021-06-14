@@ -14,6 +14,10 @@ public class GameControl : MonoBehaviour
     private int internalCoins = 0;
     private GameObject coinsDisplay;
 
+    //Estrellas
+    private int internalStars = 0;
+    private GameObject starsDisplay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,9 @@ public class GameControl : MonoBehaviour
 
         //Monedas
         coinsDisplay = GameObject.Find("CoinsDisplay").gameObject;
+
+        //Estrellas
+        starsDisplay = GameObject.Find("StarsDisplay").gameObject;
     }
 
     // Update is called once per frame
@@ -35,6 +42,7 @@ public class GameControl : MonoBehaviour
     {
         livesDisplay.GetComponent<Text>().text = "" + internalLives;
         coinsDisplay.GetComponent<Text>().text = "" + internalCoins;
+        starsDisplay.GetComponent<Text>().text = "" + internalStars;
     }
 
     //Vidas
@@ -62,5 +70,16 @@ public class GameControl : MonoBehaviour
     public void increaseCoins()
     {
         internalCoins++;
+    }
+
+    //Estrellas
+    public void decreaseStars()
+    {
+        internalStars--;
+    }
+
+    public void increaseStars()
+    {
+        internalStars++;
     }
 }
