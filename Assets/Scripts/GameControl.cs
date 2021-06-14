@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,11 @@ public class GameControl : MonoBehaviour
     private int internalStars = 0;
     private GameObject starsDisplay;
 
+    //Timer
+    public int startingTime = 300;
+    private float internalTime;
+    private GameObject timeDisplay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,11 +36,16 @@ public class GameControl : MonoBehaviour
 
         //Estrellas
         starsDisplay = GameObject.Find("StarsDisplay").gameObject;
+
+        //Timer
+        internalTime = startingTime;
+        timeDisplay = GameObject.Find("TimeDisplay").gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
+        updateTimer();
         updateDisplays();
     }
 
@@ -43,6 +54,7 @@ public class GameControl : MonoBehaviour
         livesDisplay.GetComponent<Text>().text = "" + internalLives;
         coinsDisplay.GetComponent<Text>().text = "" + internalCoins;
         starsDisplay.GetComponent<Text>().text = "" + internalStars;
+        timeDisplay.GetComponent<Text>().text = "" + (int)internalTime;
     }
 
     //Vidas
@@ -81,5 +93,14 @@ public class GameControl : MonoBehaviour
     public void increaseStars()
     {
         internalStars++;
+    }
+
+    private void updateTimer()
+    {
+        internalTime -= Time.deltaTime;
+        if (internalTime < 0)
+        {
+            //TODO FIN DE JUEGO
+        }
     }
 }
