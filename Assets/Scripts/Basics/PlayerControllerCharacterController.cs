@@ -50,7 +50,7 @@ public class PlayerControllerCharacterController : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
 
         //Mover al jugador en la direccion de la camara
-        if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             transform.rotation = Quaternion.Euler(0f, rotationPoint.transform.rotation.eulerAngles.y, 0f);
             Quaternion playerNewRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
