@@ -136,4 +136,9 @@ public class GameControl : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
+
+    public static bool isBigMario()
+    {
+        return internalBigMario;
+    }
 }

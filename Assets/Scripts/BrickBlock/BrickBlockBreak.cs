@@ -6,10 +6,13 @@ public class BrickBlockBreak : MonoBehaviour
 {
     public GameObject brick;
     public GameObject breakBrick;
+    public BoxCollider collider;
 
     public bool containsCoin = false;
     private void OnTriggerEnter(Collider other)
     {
+        GetComponent<BoxCollider>().enabled = false;
+        collider.enabled = false;
         brick.SetActive(false);
         breakBrick.SetActive(true);
         if (containsCoin)
