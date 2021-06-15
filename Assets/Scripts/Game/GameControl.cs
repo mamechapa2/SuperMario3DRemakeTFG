@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour
 {
@@ -24,9 +25,9 @@ public class GameControl : MonoBehaviour
     private static float internalTime;
     private GameObject timeDisplay;
 
-    //LevelControl
-    public int numMaxLevel;
-    public int numWorlds;
+    //Powerup
+    public bool bigMario = false;
+    private static bool internalBigMario;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,9 @@ public class GameControl : MonoBehaviour
         //Timer
         internalTime = startingTime;
         timeDisplay = GameObject.Find("TimeDisplay").gameObject;
+
+        //Powerup
+        internalBigMario = bigMario;
     }
 
     // Update is called once per frame
@@ -100,12 +104,36 @@ public class GameControl : MonoBehaviour
         internalStars++;
     }
 
+    //Timer
     private static void updateTimer()
     {
         internalTime -= Time.deltaTime;
         if (internalTime < 0)
         {
             //TODO FIN DE JUEGO
+        }
+    }
+
+    //Powerup
+    public static void powerUpCollect()
+    {
+        internalBigMario = true;
+        Debug.Log("GameControl::powerUpCollect");
+        //TODO CAMBIAR ESCALA DEL PERSONAJE
+    }
+
+    public static void damageReceived()
+    {
+        if (internalBigMario)
+        {
+            internalBigMario = false;
+            Debug.Log("GameControl::damageReceived: powerup perdido");
+            //TODO CAMBIAR ESCALA DEL PERSONAJE
+        }
+        else
+        {
+            Debug.Log("GameControl::damageReceived: reiniciar");
+            SceneManager.LoadScene(0);
         }
     }
 }

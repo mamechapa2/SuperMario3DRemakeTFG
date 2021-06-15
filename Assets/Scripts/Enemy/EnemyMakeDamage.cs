@@ -9,7 +9,7 @@ public class EnemyMakeDamage : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             //TODO REPRODUCIR SONIDO
-            GameControl.decreaseLives();
+            GameControl.damageReceived();
         }
     }
 }
