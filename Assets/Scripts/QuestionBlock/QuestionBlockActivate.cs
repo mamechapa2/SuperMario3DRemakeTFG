@@ -16,33 +16,20 @@ public class QuestionBlockActivate : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (GameControl.isBigMario())
+        if (other.gameObject.tag.Equals("Player"))
         {
             GetComponent<BoxCollider>().enabled = false;
-            Debug.Log("QuestionBlockActivate::OnTriggerEnter: bigmario");
+            Debug.Log("QuestionBlockActivate::OnTriggerEnter: activado");
             block.SetActive(false);
             deadBlock.SetActive(true);
             mushroom.SetActive(true);
 
             StartCoroutine(stopObjectAnimation());
         }
-        else
-        {
-            blockAnimator.SetBool("bounce", true);
-            StartCoroutine(stopBouncing());
-            Debug.Log("QuestionBlockActivate::OnTriggerEnter: no bigmario");
-        }
     }
-
     private IEnumerator stopObjectAnimation()
     {
         yield return new WaitForSeconds(0.99f);
         mushroom.GetComponentInChildren<Animator>().enabled = false;
-    }
-
-    private IEnumerator stopBouncing()
-    {
-        yield return new WaitForSeconds(0.18f);
-        blockAnimator.SetBool("bounce", false);
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour
 {
+    private static GameObject player;
     //Vidas
     public int startingLives = 3;
     private static int internalLives;
@@ -32,6 +33,7 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").gameObject;
         //Vidas
         internalLives = startingLives;
         livesDisplay = GameObject.Find("LivesDisplay").gameObject;
@@ -120,6 +122,7 @@ public class GameControl : MonoBehaviour
         internalBigMario = true;
         Debug.Log("GameControl::powerUpCollect");
         //TODO CAMBIAR ESCALA DEL PERSONAJE
+        player.transform.localScale = new Vector3(1, 1, 1);
     }
 
     public static void damageReceived()
@@ -129,6 +132,7 @@ public class GameControl : MonoBehaviour
             internalBigMario = false;
             Debug.Log("GameControl::damageReceived: powerup perdido");
             //TODO CAMBIAR ESCALA DEL PERSONAJE
+            player.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
         }
         else
         {

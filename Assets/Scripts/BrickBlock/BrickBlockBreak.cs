@@ -9,22 +9,38 @@ public class BrickBlockBreak : MonoBehaviour
     public BoxCollider collider;
 
     public bool containsCoin = false;
+
+    public Animator brickAnimator;
     private void OnTriggerEnter(Collider other)
     {
-        GetComponent<BoxCollider>().enabled = false;
-        collider.enabled = false;
-        brick.SetActive(false);
-        breakBrick.SetActive(true);
-        if (containsCoin)
+        if (GameControl.isBigMario())
         {
-            GameControl.increaseCoins();
+            GetComponent<BoxCollider>().enabled = false;
+            collider.enabled = false;
+            brick.SetActive(false);
+            breakBrick.SetActive(true);
+            if (containsCoin)
+            {
+                GameControl.increaseCoins();
+            }
+            StartCoroutine(destroyBlock());
         }
-        StartCoroutine(destroyBlock());
+        else
+        {
+            brickAnimator.SetBool("bounce", true);
+            StartCoroutine(stopBouncing());
+        }
     }
 
     private IEnumerator destroyBlock()
     {
         yield return new WaitForSeconds(1.13f);
         breakBrick.SetActive(false);
+    }
+
+    private IEnumerator stopBouncing()
+    {
+        yield return new WaitForSeconds(0.18f);
+        brickAnimator.SetBool("bounce", false);
     }
 }

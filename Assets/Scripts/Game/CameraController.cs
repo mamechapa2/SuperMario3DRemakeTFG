@@ -36,7 +36,6 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
 
-        rotationPoint.transform.position = player.transform.position;
         //Girar el jugador hacia donde mira la camara
         float horizontal = Input.GetAxis("Mouse X") * rotationSpeed;
         rotationPoint.transform.Rotate(0, horizontal, 0);
