@@ -16,6 +16,8 @@ public class CameraController : MonoBehaviour
         player = GameObject.Find("PlayerCC").gameObject;
         transform.position = new Vector3(player.transform.position.x + offsetX, player.transform.position.y + offsetY, transform.position.z);
         
+        transform.LookAt(new Vector3(); //Mirar hacia el jugador
+        
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -23,5 +25,6 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         transform.position = new Vector3(player.transform.position.x + offsetX, player.transform.position.y, transform.position.z);
+        transform.LookAt(); //Mirar hacia el jugador
     }
 }
