@@ -48,6 +48,8 @@ public class PipeUse : MonoBehaviour
 
     private IEnumerator usePipe()
     {
+        //SEGUIR LLORANDO CON ESTO
+        //ACTIVAR BIEN EL ANIMATOR
         Debug.Log("PipeUse::usePipe");
         
         usingPipe = true; //Control de uso
