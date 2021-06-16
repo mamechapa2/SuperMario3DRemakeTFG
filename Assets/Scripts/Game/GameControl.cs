@@ -35,6 +35,7 @@ public class GameControl : MonoBehaviour
     //Camera
     private GameObject orthographicCamera;
     private GameObject perspectiveCamera;
+    private static bool orthographic = true;
 
     // Start is called before the first frame update
     void Start()
@@ -81,15 +82,6 @@ public class GameControl : MonoBehaviour
         coinsDisplay.GetComponent<Text>().text = "" + internalCoins;
         starsDisplay.GetComponent<Text>().text = "" + internalStars;
         timeDisplay.GetComponent<Text>().text = "" + (int)internalTime;
-    }
-
-    private void changeCamera()
-    {
-        if (Input.GetKeyDown("v"))
-        {
-            orthographicCamera.GetComponent<Camera>().enabled = !orthographicCamera.GetComponent<Camera>().enabled;
-            perspectiveCamera.GetComponent<Camera>().enabled = !perspectiveCamera.GetComponent<Camera>().enabled;
-        }
     }
 
     //Vidas
@@ -208,5 +200,21 @@ public class GameControl : MonoBehaviour
             StartCoroutine(damageReceivedAnimation());
             makeMarioSmall = false;
         }
+    }
+
+    //Camera
+    private void changeCamera()
+    {
+        if (Input.GetKeyDown("v"))
+        {
+            orthographicCamera.GetComponent<Camera>().enabled = !orthographicCamera.GetComponent<Camera>().enabled;
+            orthographic = !orthographic;
+            perspectiveCamera.GetComponent<Camera>().enabled = !perspectiveCamera.GetComponent<Camera>().enabled;
+        }
+    }
+
+    public static bool isOrthographic()
+    {
+        return orthographic;
     }
 }
