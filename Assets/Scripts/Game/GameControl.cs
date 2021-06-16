@@ -29,6 +29,7 @@ public class GameControl : MonoBehaviour
     //Powerup
     public bool bigMario = false;
     private static bool internalBigMario;
+    private static bool aumentarMario = false;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +58,11 @@ public class GameControl : MonoBehaviour
     {
         updateTimer();
         updateDisplays();
+        if (aumentarMario)
+        {
+            StartCoroutine(animacionPowerUp());
+            aumentarMario = false;
+        }
     }
 
     private void updateDisplays()
@@ -120,8 +126,20 @@ public class GameControl : MonoBehaviour
     public static void powerUpCollect()
     {
         internalBigMario = true;
+        aumentarMario = true;
         Debug.Log("GameControl::powerUpCollect");
-        //TODO CAMBIAR ESCALA DEL PERSONAJE
+    }
+
+    private IEnumerator animacionPowerUp()
+    {
+        player.transform.localScale = new Vector3(1, 1, 1);
+        yield return new WaitForSeconds(0.05f);
+        player.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        yield return new WaitForSeconds(0.05f);
+        player.transform.localScale = new Vector3(1, 1, 1);
+        yield return new WaitForSeconds(0.05f);
+        player.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        yield return new WaitForSeconds(0.05f);
         player.transform.localScale = new Vector3(1, 1, 1);
     }
 
