@@ -32,10 +32,15 @@ public class GameControl : MonoBehaviour
     private static bool makeMarioBigger = false;
     private static bool makeMarioSmall = false;
 
+    //Camera
+    private GameObject orthographicCamera;
+    private GameObject perspectiveCamera;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
+
         //Vidas
         internalLives = startingLives;
         livesDisplay = GameObject.Find("LivesDisplay").gameObject;
@@ -52,6 +57,13 @@ public class GameControl : MonoBehaviour
 
         //Powerup
         internalBigMario = bigMario;
+        makeMarioBigger = bigMario;
+
+        //Camera
+        orthographicCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
+        perspectiveCamera = GameObject.FindGameObjectWithTag("SecondCamera").gameObject;
+        orthographicCamera.GetComponent<Camera>().enabled = true;
+        perspectiveCamera.GetComponent<Camera>().enabled = false;
     }
 
     // Update is called once per frame
@@ -59,17 +71,8 @@ public class GameControl : MonoBehaviour
     {
         updateTimer();
         updateDisplays();
-        if (makeMarioBigger)
-        {
-            StartCoroutine(powerUpCollectAnimation());
-            makeMarioBigger = false;
-        }
-
-        if (makeMarioSmall)
-        {
-            StartCoroutine(damageReceivedAnimation());
-            makeMarioSmall = false;
-        }
+        updateMarioScale();
+        changeCamera();
     }
 
     private void updateDisplays()
@@ -78,6 +81,15 @@ public class GameControl : MonoBehaviour
         coinsDisplay.GetComponent<Text>().text = "" + internalCoins;
         starsDisplay.GetComponent<Text>().text = "" + internalStars;
         timeDisplay.GetComponent<Text>().text = "" + (int)internalTime;
+    }
+
+    private void changeCamera()
+    {
+        if (Input.GetKeyDown("v"))
+        {
+            orthographicCamera.GetComponent<Camera>().enabled = !orthographicCamera.GetComponent<Camera>().enabled;
+            perspectiveCamera.GetComponent<Camera>().enabled = !perspectiveCamera.GetComponent<Camera>().enabled;
+        }
     }
 
     //Vidas
@@ -181,5 +193,20 @@ public class GameControl : MonoBehaviour
     public static bool isBigMario()
     {
         return internalBigMario;
+    }
+
+    private void updateMarioScale()
+    {
+        if (makeMarioBigger)
+        {
+            StartCoroutine(powerUpCollectAnimation());
+            makeMarioBigger = false;
+        }
+
+        if (makeMarioSmall)
+        {
+            StartCoroutine(damageReceivedAnimation());
+            makeMarioSmall = false;
+        }
     }
 }

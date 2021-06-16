@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController3D : MonoBehaviour
 {
     private GameObject player;
 
@@ -14,14 +14,15 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("PlayerCC").gameObject;
-        transform.position = new Vector3(player.transform.position.x - offsetX, player.transform.position.y + offsetY, transform.position.z);
-        
+        transform.position = new Vector3(player.transform.position.x + offsetX, player.transform.position.y + offsetY, player.transform .position.z);
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = new Vector3(player.transform.position.x - offsetX, player.transform.position.y + offsetY, transform.position.z);
+        transform.position = new Vector3(player.transform.position.x + offsetX, player.transform.position.y + offsetY, player.transform.position.z);
+        transform.LookAt(player.transform);
     }
 }
