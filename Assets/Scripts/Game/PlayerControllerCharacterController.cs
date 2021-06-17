@@ -70,7 +70,7 @@ public class PlayerControllerCharacterController : MonoBehaviour
             playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, playerNewRotation, rotationSpeed * Time.deltaTime); //Para realizar suave el movimiento
         }
 
-        animator.SetBool("isGrounded", characterController.isGrounded);
+        animator.SetBool("isGrounded", characterController.isGrounded || GameControl.isUsingPipe());
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
     }
 

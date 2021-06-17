@@ -7,6 +7,7 @@ public class PipeUse : MonoBehaviour
     private GameObject player;
     private bool playerAtTop = false;
     private bool usingPipe = false;
+    private bool used = false;
 
     public Animator colliderAnimator;
     public GameObject exit;
@@ -22,8 +23,10 @@ public class PipeUse : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftControl) && !usingPipe)
         {
-            if (playerAtTop)
+            if (playerAtTop && !used)
             {
+                used = true;
+                GameControl.setUsingPipe(true);
                 StartCoroutine(usePipe());
             }
         }
@@ -50,22 +53,24 @@ public class PipeUse : MonoBehaviour
     {
         //SEGUIR LLORANDO CON ESTO
         //ACTIVAR BIEN EL ANIMATOR
-        Debug.Log("PipeUse::usePipe");
-        
+        Debug.Log("PipeUse::usePipe: inicio");
+        player.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z); //Centrar al jugador
         usingPipe = true; //Control de uso
         colliderAnimator.enabled = true; //Activar animator
 
-        player.transform.position = transform.position; //Centrar al jugador
-        //player.GetComponent<CharacterController>().enabled = false; //Desactivar control del jugador
+        yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(2f);
-        
+        player.GetComponent<CharacterController>().enabled = false; //Desactivar control del jugador
         player.transform.position = exit.transform.position; //Mover al jugador a la salida
-        //player.GetComponent<CharacterController>().enabled = true; //Devolver control al jugador
+        player.GetComponent<CharacterController>().enabled = true; //Devolver control al jugador
 
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(1f);
+
         colliderAnimator.enabled = false;
 
+        Debug.Log("PipeUse::usePipe: tp");
+
         usingPipe = false;
+        GameControl.setUsingPipe(false);
     }
 }

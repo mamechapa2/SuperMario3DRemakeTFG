@@ -37,6 +37,9 @@ public class GameControl : MonoBehaviour
     private GameObject perspectiveCamera;
     private static bool orthographic = true;
 
+    //Pipe
+    private static bool usingPipe = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -216,5 +219,17 @@ public class GameControl : MonoBehaviour
     public static bool isOrthographic()
     {
         return orthographic;
+    }
+
+    //Pipe
+    public static void setUsingPipe(bool isUsing)
+    {
+        Debug.Log("Mi puta madre" + isUsing.ToString());
+        usingPipe = isUsing;
+    }
+
+    public static bool isUsingPipe()
+    {
+        return usingPipe;
     }
 }
