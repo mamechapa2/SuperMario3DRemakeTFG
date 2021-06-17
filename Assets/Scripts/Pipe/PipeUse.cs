@@ -12,10 +12,13 @@ public class PipeUse : MonoBehaviour
     public Animator colliderAnimator;
     public GameObject exit;
 
+    private Animator fadeScreen;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        fadeScreen = GameObject.Find("Fadescreen").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -51,24 +54,22 @@ public class PipeUse : MonoBehaviour
 
     private IEnumerator usePipe()
     {
-        //SEGUIR LLORANDO CON ESTO
-        //ACTIVAR BIEN EL ANIMATOR
-        Debug.Log("PipeUse::usePipe: inicio");
-        player.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z); //Centrar al jugador
+        //Posicionamos el jugador y activamos las animaciones
+        player.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z); //Centrar al jugador
         usingPipe = true; //Control de uso
         colliderAnimator.enabled = true; //Activar animator
+        fadeScreen.enabled = true;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f); //Esperamos un segundo para las animaciones
 
+        //Mover al jugador a la salida (desactivando su controlador)
         player.GetComponent<CharacterController>().enabled = false; //Desactivar control del jugador
         player.transform.position = exit.transform.position; //Mover al jugador a la salida
         player.GetComponent<CharacterController>().enabled = true; //Devolver control al jugador
 
-        yield return new WaitForSeconds(1f);
-
+        yield return new WaitForSeconds(1f); //Esperamos un segundo para las animaciones
+        fadeScreen.enabled = false;
         colliderAnimator.enabled = false;
-
-        Debug.Log("PipeUse::usePipe: tp");
 
         usingPipe = false;
         GameControl.setUsingPipe(false);
