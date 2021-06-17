@@ -37,8 +37,8 @@ public class PipeUse : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Player")){
-            Debug.Log("PipeUse::OnTriggerEnter");
+        if (other.gameObject.tag.Equals("Player"))
+        {
             playerAtTop = true;
         }
     }
@@ -47,7 +47,6 @@ public class PipeUse : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            Debug.Log("PipeUse::OnTriggerExit");
             playerAtTop = false;
         }
     }

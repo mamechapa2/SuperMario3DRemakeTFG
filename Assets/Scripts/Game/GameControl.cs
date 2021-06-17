@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameControl : MonoBehaviour
 {
     private static GameObject player;
+
     //Vidas
     public int startingLives = 3;
     private static int internalLives;
@@ -141,7 +142,6 @@ public class GameControl : MonoBehaviour
     {
         internalBigMario = true;
         makeMarioBigger = true;
-        Debug.Log("GameControl::powerUpCollect");
     }
 
     private IEnumerator powerUpCollectAnimation()
@@ -163,11 +163,9 @@ public class GameControl : MonoBehaviour
         {
             internalBigMario = false;
             makeMarioSmall = true;
-            Debug.Log("GameControl::damageReceived: powerup perdido");
         }
         else
         {
-            Debug.Log("GameControl::damageReceived: reiniciar");
             SceneManager.LoadScene(0);
         }
     }
@@ -224,7 +222,6 @@ public class GameControl : MonoBehaviour
     //Pipe
     public static void setUsingPipe(bool isUsing)
     {
-        Debug.Log("Mi puta madre" + isUsing.ToString());
         usingPipe = isUsing;
     }
 
