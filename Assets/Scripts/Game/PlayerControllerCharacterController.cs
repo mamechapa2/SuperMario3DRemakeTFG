@@ -49,6 +49,7 @@ public class PlayerControllerCharacterController : MonoBehaviour
             moveDirection.y = 0f;
             if (Input.GetButtonDown("Jump"))
             {
+                GameObject.Find("Jump").GetComponent<AudioSource>().Play();
                 moveDirection.y = jumpSpeed;
             }
         }

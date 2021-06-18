@@ -26,6 +26,7 @@ public class GameControl : MonoBehaviour
     public int startingTime = 300;
     private static float internalTime;
     private GameObject timeDisplay;
+    private bool warning = false;
 
     //Powerup
     public bool bigMario = false;
@@ -103,6 +104,7 @@ public class GameControl : MonoBehaviour
     public static void increaseLives()
     {
         internalLives++;
+        GameObject.Find("GreenMushroomPickUp").GetComponent<AudioSource>().Play();
     } 
 
     //Monedas
@@ -114,6 +116,7 @@ public class GameControl : MonoBehaviour
     public static void increaseCoins()
     {
         internalCoins++;
+        GameObject.Find("CoinPickUp").GetComponent<AudioSource>().Play();
     }
 
     //Estrellas
@@ -125,23 +128,40 @@ public class GameControl : MonoBehaviour
     public static void increaseStars()
     {
         internalStars++;
+        GameObject.Find("StarPickUp").GetComponent<AudioSource>().Play();
     }
 
     //Timer
-    private static void updateTimer()
+    private void updateTimer()
     {
         internalTime -= Time.deltaTime;
         if (internalTime < 0)
         {
             //TODO FIN DE JUEGO
+            GameObject.Find("Death").GetComponent<AudioSource>().Play();
+        }
+
+        if(internalTime < startingTime / 2 && !warning)
+        {
+            warning = true;
+            GameObject.Find("TimeWarning").GetComponent<AudioSource>().Play();
         }
     }
 
     //Powerup
     public static void powerUpCollect()
     {
-        internalBigMario = true;
-        makeMarioBigger = true;
+        if (internalBigMario)
+        {
+            increaseLives();
+        }
+        else
+        {
+            internalBigMario = true;
+            makeMarioBigger = true;
+            GameObject.Find("RedMushroomPickUp").GetComponent<AudioSource>().Play();
+        }
+        
     }
 
     private IEnumerator powerUpCollectAnimation()
@@ -162,7 +182,7 @@ public class GameControl : MonoBehaviour
         if (internalBigMario)
         {
             internalBigMario = false;
-            makeMarioSmall = true;
+            makeMarioSmall = true;            
         }
         else
         {
@@ -172,6 +192,7 @@ public class GameControl : MonoBehaviour
 
     private IEnumerator damageReceivedAnimation()
     {
+        GameObject.Find("PipeEntry").GetComponent<AudioSource>().Play();
         player.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
         yield return new WaitForSeconds(0.05f);
         player.transform.localScale = new Vector3(1, 1, 1);
@@ -223,6 +244,10 @@ public class GameControl : MonoBehaviour
     public static void setUsingPipe(bool isUsing)
     {
         usingPipe = isUsing;
+        if (usingPipe)
+        {
+            GameObject.Find("PipeEntry").GetComponent<AudioSource>().Play();
+        }
     }
 
     public static bool isUsingPipe()

@@ -23,6 +23,7 @@ public class QuestionBlockActivate : MonoBehaviour
             block.SetActive(false);
             deadBlock.SetActive(true);
             mushroom.SetActive(true);
+            GameObject.Find("PowerUpAppears").GetComponent<AudioSource>().Play();
 
             StartCoroutine(stopObjectAnimation());
         }

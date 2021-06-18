@@ -15,6 +15,7 @@ public class BrickBlockBreak : MonoBehaviour
     {
         if (GameControl.isBigMario())
         {
+            GameObject.Find("BrickBreak").GetComponent<AudioSource>().Play();
             GetComponent<BoxCollider>().enabled = false;
             colliderBrick.enabled = false;
             brick.SetActive(false);
@@ -27,6 +28,7 @@ public class BrickBlockBreak : MonoBehaviour
         }
         else
         {
+            GameObject.Find("BrickNotBreak").GetComponent<AudioSource>().Play();
             brickAnimator.SetBool("bounce", true);
             StartCoroutine(stopBouncing());
         }
