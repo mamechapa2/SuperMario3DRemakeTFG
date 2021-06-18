@@ -40,15 +40,10 @@ public class PlayerControllerCharacterController : MonoBehaviour
 
     private void moveWithOrtographicCamera()
     {
-        //Ajustamos el movimiento del jugador en base a los ejes "Horizontal" y "Vertical"
-
-        //float moveDirectionY = moveDirection.y;
+        //Ajustamos el movimiento del jugador en base al eje horizontal
         moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, 0f);
-        //moveDirection.x = (transform.position.x + Input.GetAxisRaw("Vertical"));
-        //moveDirection = moveDirection.normalized * moveSpeed;
-        //moveDirection.y = moveDirectionY; 
 
-        //Si esta en el suelo y se pulsa "Jump", ajustamo la direccion
+        //Si esta en el suelo y se pulsa "Jump", ajustamos la direccion
         if (characterController.isGrounded)
         {
             moveDirection.y = 0f;
@@ -62,7 +57,7 @@ public class PlayerControllerCharacterController : MonoBehaviour
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         characterController.Move(moveDirection * Time.deltaTime);
 
-        //Mover al jugador en la direccion de la camara
+        //Rotar al jugador
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             //    transform.rotation = Quaternion.Euler(0f, rotationPoint.transform.rotation.eulerAngles.y, 0f);
@@ -70,6 +65,7 @@ public class PlayerControllerCharacterController : MonoBehaviour
             playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, playerNewRotation, rotationSpeed * Time.deltaTime); //Para realizar suave el movimiento
         }
 
+        //Actualizar animaciones
         animator.SetBool("isGrounded", characterController.isGrounded || GameControl.isUsingPipe());
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
     }
@@ -77,14 +73,9 @@ public class PlayerControllerCharacterController : MonoBehaviour
     private void moveWith3DCamera()
     {
         //Ajustamos el movimiento del jugador en base a los ejes "Horizontal" y "Vertical"
-
-        //float moveDirectionY = moveDirection.y;
         moveDirection = new Vector3(-Input.GetAxis("Vertical") * moveSpeed, moveDirection.y, Input.GetAxis("Horizontal") * moveSpeed);
-        //moveDirection.x = (transform.position.x + Input.GetAxisRaw("Vertical"));
-        //moveDirection = moveDirection.normalized * moveSpeed;
-        //moveDirection.y = moveDirectionY; 
 
-        //Si esta en el suelo y se pulsa "Jump", ajustamo la direccion
+        //Si esta en el suelo y se pulsa "Jump", ajustamos la direccion
         if (characterController.isGrounded)
         {
             moveDirection.y = 0f;
@@ -106,6 +97,7 @@ public class PlayerControllerCharacterController : MonoBehaviour
             playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, playerNewRotation, rotationSpeed * Time.deltaTime); //Para realizar suave el movimiento
         }
 
+        //Actualizar animaciones
         animator.SetBool("isGrounded", characterController.isGrounded);
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical")));
     }

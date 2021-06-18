@@ -25,8 +25,8 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 0.7372549}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brick: {fileID: 1447020436}
   breakBrick: {fileID: 1171255580}
-  collider: {fileID: 1469033569}
+  colliderBrick: {fileID: 1469033569}
   containsCoin: 0
   brickAnimator: {fileID: 1447020438}
 --- !u!65 &102822934
@@ -1737,13 +1737,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: -0.47667402, y: 0.62502396, z: -0.618037, w: 0.012542823}
+  m_LocalRotation: {x: 0.80706, y: -0.42017227, z: 0.017105874, w: 0.414508}
   m_LocalPosition: {x: 0, y: 4.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 49.519, y: 111.293, z: -109.656}
+  m_LocalEulerAnglesHint: {x: 43.113, y: -153.938, z: -114.547}
 --- !u!1 &724778241
 GameObject:
   m_ObjectHideFlags: 0
@@ -2272,7 +2272,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0
+  near clip plane: 0.01
   far clip plane: 6000
   field of view: 60
   orthographic: 1
@@ -2300,7 +2300,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 2.23, y: 4.33, z: 28.29}
+  m_LocalPosition: {x: 8.64, y: 4.33, z: 28.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 890566856}
@@ -4332,7 +4332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brick: {fileID: 757301832}
   breakBrick: {fileID: 1089106518}
-  collider: {fileID: 603726704}
+  colliderBrick: {fileID: 603726704}
   containsCoin: 1
   brickAnimator: {fileID: 757301834}
 --- !u!65 &1663553696

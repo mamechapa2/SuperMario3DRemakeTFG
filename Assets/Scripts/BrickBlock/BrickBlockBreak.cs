@@ -6,7 +6,7 @@ public class BrickBlockBreak : MonoBehaviour
 {
     public GameObject brick;
     public GameObject breakBrick;
-    public BoxCollider collider;
+    public BoxCollider colliderBrick;
 
     public bool containsCoin = false;
 
@@ -16,7 +16,7 @@ public class BrickBlockBreak : MonoBehaviour
         if (GameControl.isBigMario())
         {
             GetComponent<BoxCollider>().enabled = false;
-            collider.enabled = false;
+            colliderBrick.enabled = false;
             brick.SetActive(false);
             breakBrick.SetActive(true);
             if (containsCoin)
