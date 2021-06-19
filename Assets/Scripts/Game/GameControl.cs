@@ -37,7 +37,7 @@ public class GameControl : MonoBehaviour
     //Camera
     private GameObject orthographicCamera;
     private GameObject perspectiveCamera;
-    private static bool orthographic = true;
+    public static bool orthographic = true;
 
     //Pipe
     private static bool usingPipe = false;
