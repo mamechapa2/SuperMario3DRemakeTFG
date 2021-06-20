@@ -10,8 +10,8 @@ public class GameControl : MonoBehaviour
     private static GameObject player;
 
     //Vidas
-    public int startingLives = 3;
-    private static int internalLives;
+    public static int startingLives = 3;
+    private static int internalLives = startingLives;
     private GameObject livesDisplay;
 
     //Monedas
@@ -42,13 +42,15 @@ public class GameControl : MonoBehaviour
     //Pipe
     private static bool usingPipe = false;
 
+    //
+    private static bool restart = false;
+    private static bool endGame = false;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
 
         //Vidas
-        internalLives = startingLives;
         livesDisplay = GameObject.Find("LivesDisplay").gameObject;
 
         //Monedas
@@ -79,6 +81,16 @@ public class GameControl : MonoBehaviour
         updateDisplays();
         updateMarioScale();
         changeCamera();
+        if (endGame)
+        {
+            endGame = false;
+            StartCoroutine(restartGame());
+        }
+        if (restart)
+        {
+            restart = false;
+            StartCoroutine(restartLevel());
+        }
     }
 
     private void updateDisplays()
@@ -89,15 +101,43 @@ public class GameControl : MonoBehaviour
         timeDisplay.GetComponent<Text>().text = "" + (int)internalTime;
     }
 
+    private IEnumerator restartGame()
+    {
+        player.transform.LookAt(orthographicCamera.transform.position);
+        player.GetComponent<PlayerControllerCharacterController>().enabled = false;
+        player.GetComponent<CharacterController>().enabled = false;
+        
+        player.GetComponentInChildren<Animator>().SetBool("die", true);
+        GameObject.Find("GameOver").GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(3.7f);
+    }
+
+    private IEnumerator restartLevel()
+    {
+        
+        player.GetComponent<PlayerControllerCharacterController>().enabled = false;
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.LookAt(Vector3.forward);
+        player.GetComponentInChildren<Animator>().SetBool("die", true);
+        GameObject.Find("Death").GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(2.7f);
+        SceneManager.LoadScene(0);
+    }
+
     //Vidas
     public static void decreaseLives()
     {
         internalLives--;
 
-        if (internalLives == 0)
+        if (internalLives <= 0)
         {
             //TODO FIN DE JUEGO
             Debug.Log("FIN DEL JUEGO");
+            endGame = true;
+        }
+        else
+        {
+            restart = true;
         }
     }
 
@@ -138,6 +178,7 @@ public class GameControl : MonoBehaviour
         if (internalTime < 0)
         {
             //TODO FIN DE JUEGO
+            decreaseLives();
             GameObject.Find("Death").GetComponent<AudioSource>().Play();
         }
 
@@ -186,7 +227,7 @@ public class GameControl : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(0);
+            decreaseLives();
         }
     }
 

@@ -10,6 +10,7 @@ public class EnemyDead : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
+            GameObject.Find("EnemyDead").GetComponent<AudioSource>().Play();
             GetComponent<BoxCollider>().enabled = false;
             GetComponentInParent<EnemyMove2D>().enabled = false;
             makeDamageTrigger.SetActive(false);

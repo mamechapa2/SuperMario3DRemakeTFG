@@ -13,40 +13,36 @@ public class EnemyMove2D : MonoBehaviour
     public GameObject resetPointLefta;
 
     private float currentPoint;
-    private int direction = 1;
-    // Update is called once per frame
+
+    [Header("Tick: right | Untick: left")]
+    public bool direction = true;
 
     private void Start()
     {
         internalResetPointRight = resetPointRighta.transform.position.x;
         internalResetPointLeft = resetPointLefta.transform.position.x;
-        transform.LookAt(resetPointRighta.transform.position);
     }
     void Update()
     {
         currentPoint = transform.position.x;
 
-        if (direction == 1)
+        if (direction)
         {
-            Debug.Log("Left");
             transform.LookAt(resetPointRighta.transform.position);
         }
         else
         {
-            Debug.Log("Right");
             transform.LookAt(resetPointLefta.transform.position);
         }
 
         if (currentPoint > internalResetPointRight)
         {
-            Debug.Log("Cambio a right");
-            direction = 0;
+            direction = false;
         }
 
         if (currentPoint < internalResetPointLeft)
         {
-            Debug.Log("Cambio a left");
-            direction = 1;
+            direction = true;
         }
 
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
