@@ -7,7 +7,7 @@ public class PipeUse : MonoBehaviour
     private GameObject player;
     private bool playerAtTop = false;
     private bool usingPipe = false;
-    private bool used = false;
+    public bool used = false;
 
     public Animator colliderAnimator;
     public GameObject exit;

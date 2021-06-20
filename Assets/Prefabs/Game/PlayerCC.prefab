@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpSpeed: 13
+  jumpSpeed: 15
   gravityScale: 2.5
   rotationPoint: {fileID: 0}
   rotationSpeed: 10
