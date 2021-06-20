@@ -72,6 +72,8 @@ public class GameControl : MonoBehaviour
         perspectiveCamera = GameObject.FindGameObjectWithTag("SecondCamera").gameObject;
         orthographicCamera.GetComponent<Camera>().enabled = true;
         perspectiveCamera.GetComponent<Camera>().enabled = false;
+
+        GameObject.Find("LevelMusic").GetComponent<AudioSource>().Play();
     }
 
     // Update is called once per frame
