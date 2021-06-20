@@ -10,6 +10,7 @@ public class EnemyDead : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
+            goombaObject.GetComponentInChildren<Animator>().enabled = false;
             GameObject.Find("EnemyDead").GetComponent<AudioSource>().Play();
             GetComponent<BoxCollider>().enabled = false;
             GetComponentInParent<EnemyMove2D>().enabled = false;

@@ -10,20 +10,27 @@ public class QuestionBlockActivate : MonoBehaviour
 
     public Animator blockAnimator;
 
-    private void Start()
-    {
-        
-    }
+    public bool containsMushroom = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            GetComponent<BoxCollider>().enabled = false;
-            Debug.Log("QuestionBlockActivate::OnTriggerEnter: activado");
-            block.SetActive(false);
-            deadBlock.SetActive(true);
-            mushroom.SetActive(true);
-            GameObject.Find("PowerUpAppears").GetComponent<AudioSource>().Play();
+            if (containsMushroom)
+            {
+                GetComponent<BoxCollider>().enabled = false;
+                block.SetActive(false);
+                deadBlock.SetActive(true);
+                mushroom.SetActive(true);
+                GameObject.Find("PowerUpAppears").GetComponent<AudioSource>().Play();
+            }
+            else
+            {
+                GetComponent<BoxCollider>().enabled = false;
+                block.SetActive(false);
+                deadBlock.SetActive(true);
+                GameControl.increaseCoins();
+            }
 
             StartCoroutine(stopObjectAnimation());
         }

@@ -263,6 +263,7 @@ MonoBehaviour:
   deadBlock: {fileID: 8838021777078771055}
   mushroom: {fileID: 5526345533548781957}
   blockAnimator: {fileID: 6953547547749641608}
+  containsMushroom: 0
 --- !u!1 &5526345534559761266
 GameObject:
   m_ObjectHideFlags: 0
