@@ -110,6 +110,7 @@ public class GameControl : MonoBehaviour
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("GameOver").GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(3.7f);
+        SceneManager.LoadScene(1);
     }
 
     private IEnumerator restartLevel()
@@ -117,11 +118,11 @@ public class GameControl : MonoBehaviour
         
         player.GetComponent<PlayerControllerCharacterController>().enabled = false;
         player.GetComponent<CharacterController>().enabled = false;
-        player.transform.LookAt(Vector3.forward);
+        player.transform.LookAt(orthographicCamera.transform.position.normalized);
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("Death").GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(2.7f);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     //Vidas

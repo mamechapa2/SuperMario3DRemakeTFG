@@ -14,6 +14,7 @@ public class EnemyDead : MonoBehaviour
             GameObject.Find("EnemyDead").GetComponent<AudioSource>().Play();
             GetComponent<BoxCollider>().enabled = false;
             GetComponentInParent<EnemyMove2D>().enabled = false;
+            goombaObject.GetComponentInChildren<EnemyMakeDamage>().enabled = false;
             makeDamageTrigger.SetActive(false);
             goombaObject.transform.localScale = new Vector3(1, 0.5f, 1);
             goombaObject.transform.position = new Vector3(goombaObject.transform.position.x, goombaObject.transform.position.y - 0.5f, goombaObject.transform.position.z);
