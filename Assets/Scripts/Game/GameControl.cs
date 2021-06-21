@@ -44,12 +44,27 @@ public class GameControl : MonoBehaviour
     private static bool usingPipe = false;
 
     //Score
-    public static int score = 0;
-    public int displayScore = 0;
+    private static int score = 0;
+    private int displayScore = 0;
     private GameObject scoreUI;
     //
     private static bool restart = false;
     private static bool endGame = false;
+
+    //
+    private static GameControl gameControl;
+    private void Awake()
+    {
+        if (gameControl == null)
+        {
+            gameControl = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (gameControl != this)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -141,7 +156,7 @@ public class GameControl : MonoBehaviour
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("GameOver").GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(3.7f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     private IEnumerator restartLevel()
@@ -153,7 +168,7 @@ public class GameControl : MonoBehaviour
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("Death").GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(2.7f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     //Vidas

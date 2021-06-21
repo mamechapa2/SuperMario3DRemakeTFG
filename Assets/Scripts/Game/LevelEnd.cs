@@ -46,8 +46,8 @@ public class LevelEnd : MonoBehaviour
         GameObject scoreDisplay = GameObject.Find("ScoreDisplay").gameObject;
         scoreDisplay.transform.localPosition = new Vector3(0, -6, 0);
         scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 100;
-        GameControl.addScore(6000);
-        yield return new WaitForSeconds(4.3f);
+        GameControl.addScore(300);
+        yield return new WaitForSeconds(6f);
         SceneManager.LoadScene(nextScene);
     }
 
