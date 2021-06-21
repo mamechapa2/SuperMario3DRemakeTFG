@@ -24,6 +24,7 @@ public class EnemyDead : MonoBehaviour
 
     private IEnumerator disappear()
     {
+        GameControl.addScore(100);
         yield return new WaitForSeconds(2f);
         goombaObject.SetActive(false);
     }

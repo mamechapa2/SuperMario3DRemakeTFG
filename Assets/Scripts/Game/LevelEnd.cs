@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelEnd : MonoBehaviour
 {
@@ -41,6 +43,10 @@ public class LevelEnd : MonoBehaviour
         GameObject.Find("LevelEnd").GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(2f);
         orthographicCamera.GetComponent<CameraControllerOrthographic>().enabled = false;
+        GameObject scoreDisplay = GameObject.Find("ScoreDisplay").gameObject;
+        scoreDisplay.transform.localPosition = new Vector3(0, -6, 0);
+        scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 100;
+        GameControl.addScore(6000);
         yield return new WaitForSeconds(4.3f);
         SceneManager.LoadScene(nextScene);
     }
@@ -49,6 +55,7 @@ public class LevelEnd : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
+            GameObject.Find("LevelMusic").GetComponent<AudioSource>().Stop();
             end = true;
             player = other.gameObject;
             player.GetComponent<PlayerControllerCharacterController>().enabled = false;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameControl : MonoBehaviour
 {
@@ -42,6 +43,10 @@ public class GameControl : MonoBehaviour
     //Pipe
     private static bool usingPipe = false;
 
+    //Score
+    public static int score = 0;
+    public int displayScore = 0;
+    private GameObject scoreUI;
     //
     private static bool restart = false;
     private static bool endGame = false;
@@ -62,6 +67,12 @@ public class GameControl : MonoBehaviour
         //Timer
         internalTime = startingTime;
         timeDisplay = GameObject.Find("TimeDisplay").gameObject;
+
+        //Score
+        scoreUI = GameObject.Find("ScoreDisplay").gameObject;
+        scoreUI.GetComponent<TextMeshProUGUI>().text = displayScore.ToString();
+        scoreUI.GetComponent<TextMeshProUGUI>().text = displayScore.ToString();
+        StartCoroutine(updateScore());
 
         //Powerup
         internalBigMario = bigMario;
@@ -97,10 +108,28 @@ public class GameControl : MonoBehaviour
 
     private void updateDisplays()
     {
-        livesDisplay.GetComponent<Text>().text = "" + internalLives;
-        coinsDisplay.GetComponent<Text>().text = "" + internalCoins;
-        starsDisplay.GetComponent<Text>().text = "" + internalStars;
-        timeDisplay.GetComponent<Text>().text = "" + (int)internalTime;
+        livesDisplay.GetComponent <TextMeshProUGUI>().text = "" + internalLives;
+        coinsDisplay.GetComponent<TextMeshProUGUI>().text = "" + internalCoins;
+        starsDisplay.GetComponent<TextMeshProUGUI>().text = "" + internalStars;
+        timeDisplay.GetComponent<TextMeshProUGUI>().text = "" + (int)internalTime;
+    }
+
+    private IEnumerator updateScore()
+    {
+        while (true)
+        {
+            if (displayScore < score)
+            {
+                displayScore++;
+                scoreUI.GetComponent<TextMeshProUGUI>().text = displayScore.ToString();
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    public static void addScore(int points)
+    {
+        score += points;
     }
 
     private IEnumerator restartGame()
