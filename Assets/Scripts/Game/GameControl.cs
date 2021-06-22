@@ -72,7 +72,6 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         Debug.Log("Started GameControl");
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
         
@@ -173,8 +172,8 @@ public class GameControl : MonoBehaviour
         //player.transform.LookAt(orthographicCamera.transform.position.normalized);
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("Death").GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(10f);
-        SceneManager.LoadScene(1);
+        yield return new WaitForSeconds(2.7f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         player.GetComponentInChildren<Animator>().SetBool("die", false);
         player.GetComponent<PlayerControllerCharacterController>().enabled = true;
         player.GetComponent<CharacterController>().enabled = true;
