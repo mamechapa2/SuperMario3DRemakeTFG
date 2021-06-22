@@ -14,7 +14,7 @@ public class LevelEnd : MonoBehaviour
     private GameObject orthographicCamera;
     private GameObject perspectiveCamera;
 
-    public int nextScene = 0;
+    //public int nextScene = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,9 @@ public class LevelEnd : MonoBehaviour
         scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 100;
         GameControl.addScore(300);
         yield return new WaitForSeconds(6f);
-        SceneManager.LoadScene(nextScene);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        player.GetComponent<PlayerControllerCharacterController>().enabled = true;
+        orthographicCamera.GetComponent<CameraControllerOrthographic>().enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)

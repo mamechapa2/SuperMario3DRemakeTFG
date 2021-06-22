@@ -9,6 +9,7 @@ public class LevelLoad : MonoBehaviour
     void Start()
     {
         StartCoroutine(loadLevel());
+        GameControl.internalTime = 300;
     }
 
     private IEnumerator loadLevel()

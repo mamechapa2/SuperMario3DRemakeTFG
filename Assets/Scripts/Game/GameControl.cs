@@ -25,9 +25,10 @@ public class GameControl : MonoBehaviour
 
     //Timer
     public int startingTime = 300;
-    private static float internalTime;
+    public static float internalTime;
     private GameObject timeDisplay;
     private bool warning = false;
+    private bool stopTimer = false;
 
     //Powerup
     public bool bigMario = false;
@@ -231,8 +232,9 @@ public class GameControl : MonoBehaviour
     private void updateTimer()
     {
         internalTime -= Time.deltaTime;
-        if (internalTime < 0)
+        if (internalTime < 0 && !stopTimer)
         {
+            stopTimer = true;
             //TODO FIN DE JUEGO
             decreaseLives();
             GameObject.Find("Death").GetComponent<AudioSource>().Play();
