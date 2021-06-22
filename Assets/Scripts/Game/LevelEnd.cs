@@ -44,13 +44,15 @@ public class LevelEnd : MonoBehaviour
         yield return new WaitForSeconds(2f);
         orthographicCamera.GetComponent<CameraControllerOrthographic>().enabled = false;
         GameObject scoreDisplay = GameObject.Find("ScoreDisplay").gameObject;
-        scoreDisplay.transform.localPosition = new Vector3(0, -6, 0);
+        //scoreDisplay.transform.localPosition = new Vector3(0, -6, 0);
         scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 100;
         GameControl.addScore(300);
         yield return new WaitForSeconds(6f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         player.GetComponent<PlayerControllerCharacterController>().enabled = true;
         orthographicCamera.GetComponent<CameraControllerOrthographic>().enabled = true;
+        //scoreDisplay.transform.localPosition = new Vector3(0, -60, 0);
+        scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 50;
     }
 
     private void OnTriggerEnter(Collider other)

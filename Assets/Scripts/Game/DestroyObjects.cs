@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,9 +26,9 @@ public class DestroyObjects : MonoBehaviour
 
             objectToDelete = GameObject.Find("PlayerCC").gameObject;
             Destroy(objectToDelete);
-        }catch(UnityException e)
+        }catch(NullReferenceException e)
         {
-            Debug.Log("asda" + e.ToString());
+            Debug.Log("Juego iniciado por primera vez");
         }
 
         
