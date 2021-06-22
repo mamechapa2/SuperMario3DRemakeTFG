@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class DontDestroy : MonoBehaviour
 {
-    private static DontDestroy gameControl;
+    public string id;
     private void Awake()
     {
-        if (gameControl == null)
-        {
-            gameControl = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (gameControl != this)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        id = name + transform.position.ToString();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i < Object.FindObjectsOfType<DontDestroy>().Length; i++)
+        {
+            if(Object.FindObjectsOfType<DontDestroy>()[i] != this)
+            {
+                if (Object.FindObjectsOfType<DontDestroy>()[i].id.Equals(id))
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

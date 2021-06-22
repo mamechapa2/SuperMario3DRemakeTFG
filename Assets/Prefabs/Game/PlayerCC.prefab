@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 4033391279378810150}
   - component: {fileID: 4033391279378810149}
   - component: {fileID: 4033391279378810154}
+  - component: {fileID: 7163788494440370475}
   m_Layer: 0
   m_Name: PlayerCC
   m_TagString: Player
@@ -155,6 +156,18 @@ MonoBehaviour:
   rotationPoint: {fileID: 0}
   rotationSpeed: 10
   playerModel: {fileID: 1983884527028123871}
+--- !u!114 &7163788494440370475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4033391279378810148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12bb322f51010049bda61558776837c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4033391280101431384
 GameObject:
   m_ObjectHideFlags: 0

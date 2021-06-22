@@ -52,24 +52,30 @@ public class GameControl : MonoBehaviour
     private static bool endGame = false;
 
     //
-    private static GameControl gameControl;
+    private static GameControl gameControl = null;
     private void Awake()
     {
+        Debug.Log("Awake GameControl");
         if (gameControl == null)
         {
             gameControl = this;
+            Debug.Log("Asignado");
             DontDestroyOnLoad(gameObject);
         }
         else if (gameControl != this)
         {
-            DontDestroyOnLoad(gameObject);
+            Debug.Log("Eliminado");
+            Destroy(this);
         }
     }
+
     // Start is called before the first frame update
     void Start()
     {
+        
+        Debug.Log("Started GameControl");
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
-
+        
         //Vidas
         livesDisplay = GameObject.Find("LivesDisplay").gameObject;
 
@@ -161,14 +167,18 @@ public class GameControl : MonoBehaviour
 
     private IEnumerator restartLevel()
     {
-        
+        Debug.Log("QWEQEQEQEQEQEQEQEQEWQS");
         player.GetComponent<PlayerControllerCharacterController>().enabled = false;
         player.GetComponent<CharacterController>().enabled = false;
-        player.transform.LookAt(orthographicCamera.transform.position.normalized);
+        //player.transform.LookAt(orthographicCamera.transform.position.normalized);
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("Death").GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(2.7f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene(1);
+        player.GetComponentInChildren<Animator>().SetBool("die", false);
+        player.GetComponent<PlayerControllerCharacterController>().enabled = true;
+        player.GetComponent<CharacterController>().enabled = true;
+        Debug.Log("AYHUISDQIOWEQIOWEQIOW^^");
     }
 
     //Vidas
