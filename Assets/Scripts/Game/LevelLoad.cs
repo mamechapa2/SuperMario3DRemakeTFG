@@ -9,12 +9,12 @@ public class LevelLoad : MonoBehaviour
     void Start()
     {
         StartCoroutine(loadLevel());
-        GameControl.internalTime = 300;
     }
 
     private IEnumerator loadLevel()
     {
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameControl.internalTime = 300;
     }
 }

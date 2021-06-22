@@ -12,15 +12,15 @@ public class GameControl : MonoBehaviour
 
     //Vidas
     public static int startingLives = 3;
-    private static int internalLives = startingLives;
+    private static int internalLives;
     private GameObject livesDisplay;
 
     //Monedas
-    private static int internalCoins = 0;
+    private static int internalCoins;
     private GameObject coinsDisplay;
 
     //Estrellas
-    private static int internalStars = 0;
+    private static int internalStars;
     private GameObject starsDisplay;
 
     //Timer
@@ -78,12 +78,15 @@ public class GameControl : MonoBehaviour
         
         //Vidas
         livesDisplay = GameObject.Find("LivesDisplay").gameObject;
+        internalLives = startingLives;
 
         //Monedas
         coinsDisplay = GameObject.Find("CoinsDisplay").gameObject;
+        internalCoins = 0;
 
         //Estrellas
         starsDisplay = GameObject.Find("StarsDisplay").gameObject;
+        internalStars = 0;
 
         //Timer
         internalTime = startingTime;
@@ -352,5 +355,28 @@ public class GameControl : MonoBehaviour
     public static bool isUsingPipe()
     {
         return usingPipe;
+    }
+
+    public static void resetGame()
+    {
+        Debug.Log("Started GameControl");
+        player = GameObject.FindGameObjectWithTag("Player").gameObject;
+
+        //Vidas
+        internalLives = startingLives;
+
+        //Monedas
+        internalCoins = 0;
+
+        //Estrellas
+        internalStars = 0;
+
+        //Timer
+        internalTime = 300;
+
+        //Score
+
+        //Powerup
+        internalBigMario = false;
     }
 }
