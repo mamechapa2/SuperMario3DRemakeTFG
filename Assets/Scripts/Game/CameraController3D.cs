@@ -14,7 +14,7 @@ public class CameraController3D : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("PlayerCC").gameObject;
-        transform.position = new Vector3(player.transform.position.x + offsetX, player.transform.position.y + offsetY, player.transform .position.z);
+        transform.position = new Vector3(player.transform.position.x - offsetX, player.transform.position.y + offsetY, transform.position.z);
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -22,7 +22,6 @@ public class CameraController3D : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = new Vector3(player.transform.position.x + offsetX, player.transform.position.y + offsetY, player.transform.position.z);
-        transform.LookAt(player.transform);
+        transform.position = new Vector3(player.transform.position.x - offsetX, player.transform.position.y + offsetY, transform.position.z);
     }
 }
