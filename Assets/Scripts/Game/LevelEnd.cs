@@ -63,6 +63,7 @@ public class LevelEnd : MonoBehaviour
             end = true;
             player = other.gameObject;
             player.GetComponent<PlayerControllerCharacterController>().enabled = false;
+            GameControl.stopTimer = true;
             if (!GameControl.isOrthographic())
             {
                 orthographicCamera.GetComponent<Camera>().enabled = !orthographicCamera.GetComponent<Camera>().enabled;

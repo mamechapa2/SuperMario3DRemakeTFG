@@ -28,7 +28,7 @@ public class GameControl : MonoBehaviour
     public static float internalTime;
     private GameObject timeDisplay;
     private bool warning = false;
-    private bool stopTimer = false;
+    public static bool stopTimer = false;
 
     //Powerup
     public bool bigMario = false;
@@ -114,7 +114,10 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        updateTimer();
+        if (!stopTimer)
+        {
+            updateTimer();
+        }
         updateDisplays();
         updateMarioScale();
         changeCamera();
@@ -170,6 +173,7 @@ public class GameControl : MonoBehaviour
 
     private IEnumerator restartLevel()
     {
+        stopTimer = true;
         Debug.Log("QWEQEQEQEQEQEQEQEQEWQS");
         player.GetComponent<PlayerControllerCharacterController>().enabled = false;
         player.GetComponent<CharacterController>().enabled = false;
@@ -235,7 +239,7 @@ public class GameControl : MonoBehaviour
     private void updateTimer()
     {
         internalTime -= Time.deltaTime;
-        if (internalTime < 0 && !stopTimer)
+        if (internalTime < 0)
         {
             stopTimer = true;
             //TODO FIN DE JUEGO
