@@ -208,6 +208,7 @@ public class GameControl : MonoBehaviour
     public static void increaseLives()
     {
         internalLives++;
+        GameControl.addScore(150);
         GameObject.Find("GreenMushroomPickUp").GetComponent<AudioSource>().Play();
     } 
 
@@ -220,6 +221,7 @@ public class GameControl : MonoBehaviour
     public static void increaseCoins()
     {
         internalCoins++;
+        GameControl.addScore(100);
         GameObject.Find("CoinPickUp").GetComponent<AudioSource>().Play();
     }
 
@@ -232,6 +234,7 @@ public class GameControl : MonoBehaviour
     public static void increaseStars()
     {
         internalStars++;
+        GameControl.addScore(200);
         GameObject.Find("StarPickUp").GetComponent<AudioSource>().Play();
     }
 
@@ -263,6 +266,7 @@ public class GameControl : MonoBehaviour
         }
         else
         {
+            GameControl.addScore(50);
             internalBigMario = true;
             makeMarioBigger = true;
             GameObject.Find("RedMushroomPickUp").GetComponent<AudioSource>().Play();

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerControllerCharacterController : MonoBehaviour
 {
-    public float moveSpeed = 10;
+    public float moveSpeed = 5;
+    public float runSpeed = 10;
     public float jumpSpeed = 8.5f;
     private CharacterController characterController;
 
@@ -40,8 +41,16 @@ public class PlayerControllerCharacterController : MonoBehaviour
 
     private void moveWithOrtographicCamera()
     {
+        if (Input.GetButton("Run"))
+        {
+            moveDirection = new Vector3(-Input.GetAxis("Horizontal") * runSpeed, moveDirection.y, 0f);
+        }
+        else
+        {
+            moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, 0f);
+        }
         //Ajustamos el movimiento del jugador en base al eje horizontal
-        moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, 0f);
+        
 
         //Si esta en el suelo y se pulsa "Jump", ajustamos la direccion
         if (characterController.isGrounded)
