@@ -91,7 +91,6 @@ public class PlayerControllerCharacterController : MonoBehaviour
             moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, -Input.GetAxis("Vertical") * moveSpeed);
         }
         //Ajustamos el movimiento del jugador en base a los ejes "Horizontal" y "Vertical"
-        moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, -Input.GetAxis("Vertical") * moveSpeed);
 
         //Si esta en el suelo y se pulsa "Jump", ajustamos la direccion
         if (characterController.isGrounded)
