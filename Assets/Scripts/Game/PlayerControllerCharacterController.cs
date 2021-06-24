@@ -82,6 +82,14 @@ public class PlayerControllerCharacterController : MonoBehaviour
 
     private void moveWith3DCamera()
     {
+        if (Input.GetButton("Run"))
+        {
+            moveDirection = new Vector3(-Input.GetAxis("Horizontal") * runSpeed, moveDirection.y, -Input.GetAxis("Vertical") * runSpeed);
+        }
+        else
+        {
+            moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, -Input.GetAxis("Vertical") * moveSpeed);
+        }
         //Ajustamos el movimiento del jugador en base a los ejes "Horizontal" y "Vertical"
         moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, -Input.GetAxis("Vertical") * moveSpeed);
 
