@@ -164,7 +164,7 @@ public class GameControl : MonoBehaviour
         player.transform.LookAt(orthographicCamera.transform.position);
         player.GetComponent<PlayerControllerCharacterController>().enabled = false;
         player.GetComponent<CharacterController>().enabled = false;
-        
+        GameControl.score = 0;
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("GameOver").GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(3.7f);
