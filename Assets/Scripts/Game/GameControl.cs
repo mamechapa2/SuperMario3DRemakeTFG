@@ -48,11 +48,12 @@ public class GameControl : MonoBehaviour
     private static int score = 0;
     private int displayScore = 0;
     private GameObject scoreUI;
-    //
+    
+    //Control
     private static bool restart = false;
     private static bool endGame = false;
 
-    //
+    //DontDestroy
     private static GameControl gameControl = null;
     private void Awake()
     {
@@ -118,14 +119,17 @@ public class GameControl : MonoBehaviour
         {
             updateTimer();
         }
+
         updateDisplays();
         updateMarioScale();
         changeCamera();
+
         if (endGame)
         {
             endGame = false;
             StartCoroutine(restartGame());
         }
+
         if (restart)
         {
             restart = false;
@@ -141,51 +145,42 @@ public class GameControl : MonoBehaviour
         timeDisplay.GetComponent<TextMeshProUGUI>().text = "" + (int)internalTime;
     }
 
-    private IEnumerator updateScore()
-    {
-        while (true)
-        {
-            if (displayScore < score)
-            {
-                displayScore++;
-                scoreUI.GetComponent<TextMeshProUGUI>().text = displayScore.ToString();
-            }
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
-
-    public static void addScore(int points)
-    {
-        score += points;
-    }
-
     private IEnumerator restartGame()
     {
         player.transform.LookAt(orthographicCamera.transform.position);
+
         player.GetComponent<PlayerControllerCharacterController>().enabled = false;
         player.GetComponent<CharacterController>().enabled = false;
+
         GameControl.score = 0;
+
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("GameOver").GetComponent<AudioSource>().Play();
+
         yield return new WaitForSeconds(3.7f);
-        SceneManager.LoadScene(0);
+
+        SceneManager.LoadScene(1);
     }
 
     private IEnumerator restartLevel()
     {
         stopTimer = true;
-        Debug.Log("QWEQEQEQEQEQEQEQEQEWQS");
+
         player.GetComponent<PlayerControllerCharacterController>().enabled = false;
         player.GetComponent<CharacterController>().enabled = false;
+
         //player.transform.LookAt(orthographicCamera.transform.position.normalized);
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("Death").GetComponent<AudioSource>().Play();
+
         yield return new WaitForSeconds(2.7f);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
         player.GetComponentInChildren<Animator>().SetBool("die", false);
+
         player.GetComponent<PlayerControllerCharacterController>().enabled = true;
         player.GetComponent<CharacterController>().enabled = true;
-        Debug.Log("AYHUISDQIOWEQIOWEQIOW^^");
     }
 
     //Vidas
@@ -245,7 +240,6 @@ public class GameControl : MonoBehaviour
         if (internalTime < 0)
         {
             stopTimer = true;
-            //TODO FIN DE JUEGO
             decreaseLives();
             GameObject.Find("Death").GetComponent<AudioSource>().Play();
         }
@@ -365,6 +359,26 @@ public class GameControl : MonoBehaviour
         return usingPipe;
     }
 
+    //Score
+    private IEnumerator updateScore()
+    {
+        while (true)
+        {
+            if (displayScore < score)
+            {
+                displayScore++;
+                scoreUI.GetComponent<TextMeshProUGUI>().text = displayScore.ToString();
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    public static void addScore(int points)
+    {
+        score += points;
+    }
+
+    //Reset
     public static void resetGame()
     {
         Debug.Log("Started GameControl");

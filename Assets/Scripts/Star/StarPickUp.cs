@@ -9,7 +9,6 @@ public class StarPickUp : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             transform.position = new Vector3(-1000, -1000, -1000);
-            //TODO REPRODUCIR SONIDO
             GameControl.increaseStars();
         }
     }

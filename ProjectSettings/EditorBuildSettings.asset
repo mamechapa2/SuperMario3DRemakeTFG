@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/MainMenu.unity
     guid: 3c95dc67e9cc5004c9a9b7a70b5b2fa2
   - enabled: 1
+    path: Assets/Scenes/Game/GameOverScene.unity
+    guid: 506b4fb73705896419d0ee35c9d9a626
+  - enabled: 1
     path: Assets/Scenes/LevelPreload/Level1-1Preload.unity
     guid: a5e2f947519d5244d8369d27b73a2af9
   - enabled: 1

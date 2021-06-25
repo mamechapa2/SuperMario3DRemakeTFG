@@ -9,15 +9,16 @@ public class EnemyMakeDamage : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             GetComponent<BoxCollider>().enabled = false;
-            //TODO REPRODUCIR SONIDO
             GameControl.damageReceived();
-            StartCoroutine(wait());
+
+            StartCoroutine(activateCollider());
         }
     }
 
-    private IEnumerator wait()
+    private IEnumerator activateCollider()
     {
         yield return new WaitForSeconds(2f);
+
         GetComponent<BoxCollider>().enabled = true;
     }
 }
