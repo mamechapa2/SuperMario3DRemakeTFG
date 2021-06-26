@@ -15,6 +15,7 @@ public class KoopaDead : MonoBehaviour
             koopaObject.SetActive(false);
             koopaMovementObject.GetComponent<EnemyMove2D>().enabled = false;
             shellObject.SetActive(true);
+            shellObject.transform.position = koopaObject.transform.position;
             GameControl.addScore(100);
 
             //Reproducir sonido
