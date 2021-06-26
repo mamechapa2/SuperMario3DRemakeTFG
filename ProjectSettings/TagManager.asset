@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SecondCamera
   - StartPosition
+  - Enemy
   layers:
   - Default
   - TransparentFX
