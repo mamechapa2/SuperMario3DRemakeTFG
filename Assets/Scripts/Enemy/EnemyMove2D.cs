@@ -47,4 +47,14 @@ public class EnemyMove2D : MonoBehaviour
 
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
+
+    private void OnColliderEnter(Collider other)
+    {
+        Debug.Log("ASDASDASDASDASDASDASDASDADADA");
+        if (!other.tag.Equals("Player"))
+        {
+            Debug.Log(other.name);
+            direction = !direction;
+        }
+    }
 }

@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 811394763373626465}
   - component: {fileID: 811394763373626466}
+  - component: {fileID: 3465535864355883023}
   m_Layer: 0
   m_Name: Koopa
   m_TagString: Untagged
@@ -76,6 +77,19 @@ MonoBehaviour:
   resetPointRighta: {fileID: 811394764056271397}
   resetPointLefta: {fileID: 811394763824274202}
   direction: 1
+--- !u!65 &3465535864355883023
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811394763373626464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &811394763824274202
 GameObject:
   m_ObjectHideFlags: 0
