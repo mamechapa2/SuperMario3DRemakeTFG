@@ -15,7 +15,7 @@ public class EnemyMakeDamage : MonoBehaviour
                 StartCoroutine(activateCollider());
                 break;
             default:
-                Debug.Log(other.name);
+                Debug.Log(this.name + " asdasd " + other.name);
                 transform.parent.gameObject.GetComponentInParent<EnemyMove2D>().direction = !transform.parent.gameObject.GetComponentInParent<EnemyMove2D>().direction;
                 break;
         }
