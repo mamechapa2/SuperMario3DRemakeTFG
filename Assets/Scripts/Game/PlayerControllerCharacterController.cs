@@ -98,7 +98,7 @@ public class PlayerControllerCharacterController : MonoBehaviour
         if (characterController.isGrounded)
         {
             moveDirection.y = 0f;
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButton("Jump"))
             {
                 moveDirection.y = jumpSpeed;
             }

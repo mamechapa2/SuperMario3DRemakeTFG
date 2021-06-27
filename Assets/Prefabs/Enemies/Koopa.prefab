@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f46216881f3574a89cce8ec5e994ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  koopaObject: {fileID: 8854937214139882721}
+  koopaObject: {fileID: 811394763373626464}
   shellObject: {fileID: 8854937215530022087}
   koopaMovementObject: {fileID: 811394763373626464}
 --- !u!1 &811394764591014115
