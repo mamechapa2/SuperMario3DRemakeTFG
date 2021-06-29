@@ -30,6 +30,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level1-3.unity
     guid: bb5dcaaab128a4941a0a1e0482495136
   - enabled: 1
+    path: Assets/Scenes/LevelPreload/Level1-4Preload.unity
+    guid: c8d713ecd93f70e4a8e282ba34afe8b6
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1-4.unity
+    guid: bd8db3656d8912f46ac883d1a1bbfa74
+  - enabled: 1
     path: Assets/Scenes/LevelPreload/Level2-1Preload.unity
     guid: 358f1020af086b644a43f1ea371b3982
   - enabled: 1
