@@ -11,6 +11,7 @@ public class BowserJrDeadTrigger : MonoBehaviour
     public GameObject bossModelObject;
 
     public GameObject[] ground;
+    public GameObject endBarrier;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -38,5 +39,7 @@ public class BowserJrDeadTrigger : MonoBehaviour
 
         explosionPrefab.SetActive(true);
         bossModelObject.SetActive(false);
+
+        endBarrier.SetActive(false);
     }
 }
