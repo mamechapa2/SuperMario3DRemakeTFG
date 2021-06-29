@@ -36,11 +36,6 @@ public class GameControl : MonoBehaviour
     private static bool makeMarioBigger = false;
     private static bool makeMarioSmall = false;
 
-    //Camera
-    private GameObject orthographicCamera;
-    private GameObject perspectiveCamera;
-    public static bool orthographic = true;
-
     //Pipe
     private static bool usingPipe = false;
 
@@ -102,12 +97,6 @@ public class GameControl : MonoBehaviour
         //Powerup
         internalBigMario = bigMario;
         makeMarioBigger = bigMario;
-
-        //Camera
-        orthographicCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
-        perspectiveCamera = GameObject.FindGameObjectWithTag("SecondCamera").gameObject;
-        orthographicCamera.GetComponent<Camera>().enabled = true;
-        perspectiveCamera.GetComponent<Camera>().enabled = false;
     }
 
     // Update is called once per frame
@@ -120,7 +109,6 @@ public class GameControl : MonoBehaviour
 
         updateDisplays();
         updateMarioScale();
-        changeCamera();
 
         if (endGame)
         {
@@ -145,15 +133,6 @@ public class GameControl : MonoBehaviour
 
     private IEnumerator restartGame()
     {
-        if (!GameControl.isOrthographic())
-        {
-            orthographicCamera.GetComponent<Camera>().enabled = !orthographicCamera.GetComponent<Camera>().enabled;
-            GameControl.orthographic = true;
-            perspectiveCamera.GetComponent<Camera>().enabled = !perspectiveCamera.GetComponent<Camera>().enabled;
-        }
-
-        player.transform.LookAt(orthographicCamera.transform.position);
-
         player.GetComponent<PlayerControllerCharacterController>().enabled = false;
         player.GetComponent<CharacterController>().enabled = false;
 
@@ -333,22 +312,6 @@ public class GameControl : MonoBehaviour
             StartCoroutine(damageReceivedAnimation());
             makeMarioSmall = false;
         }
-    }
-
-    //Camera
-    private void changeCamera()
-    {
-        if (Input.GetKeyDown("v"))
-        {
-            orthographicCamera.GetComponent<Camera>().enabled = !orthographicCamera.GetComponent<Camera>().enabled;
-            orthographic = !orthographic;
-            perspectiveCamera.GetComponent<Camera>().enabled = !perspectiveCamera.GetComponent<Camera>().enabled;
-        }
-    }
-
-    public static bool isOrthographic()
-    {
-        return orthographic;
     }
 
     //Pipe

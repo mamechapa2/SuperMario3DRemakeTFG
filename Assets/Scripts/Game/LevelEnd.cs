@@ -11,7 +11,6 @@ public class LevelEnd : MonoBehaviour
     private bool end = false;
     private bool startedBefore = false;
 
-    private GameObject orthographicCamera;
     private GameObject perspectiveCamera;
 
     //public int nextScene = 0;
@@ -19,7 +18,6 @@ public class LevelEnd : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        orthographicCamera = GameObject.FindGameObjectWithTag("MainCamera").gameObject;
         perspectiveCamera = GameObject.FindGameObjectWithTag("SecondCamera").gameObject;
     }
 
@@ -42,7 +40,7 @@ public class LevelEnd : MonoBehaviour
     {
         GameObject.Find("LevelEnd").GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(2f);
-        orthographicCamera.GetComponent<CameraControllerOrthographic>().enabled = false;
+        perspectiveCamera.GetComponent<CameraController3D>().enabled = false;
         GameObject scoreDisplay = GameObject.Find("ScoreDisplay").gameObject;
         //scoreDisplay.transform.localPosition = new Vector3(0, -6, 0);
         scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 100;
@@ -50,7 +48,7 @@ public class LevelEnd : MonoBehaviour
         yield return new WaitForSeconds(6f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         player.GetComponent<PlayerControllerCharacterController>().enabled = true;
-        orthographicCamera.GetComponent<CameraControllerOrthographic>().enabled = true;
+        perspectiveCamera.GetComponent<CameraController3D>().enabled = true;
         //scoreDisplay.transform.localPosition = new Vector3(0, -60, 0);
         scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 50;
     }
@@ -64,12 +62,6 @@ public class LevelEnd : MonoBehaviour
             player = other.gameObject;
             player.GetComponent<PlayerControllerCharacterController>().enabled = false;
             GameControl.stopTimer = true;
-            if (!GameControl.isOrthographic())
-            {
-                orthographicCamera.GetComponent<Camera>().enabled = !orthographicCamera.GetComponent<Camera>().enabled;
-                GameControl.orthographic = true;
-                perspectiveCamera.GetComponent<Camera>().enabled = !perspectiveCamera.GetComponent<Camera>().enabled;
-            }
         }
     }
 }
