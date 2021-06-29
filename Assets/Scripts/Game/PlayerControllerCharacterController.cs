@@ -29,55 +29,7 @@ public class PlayerControllerCharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameControl.isOrthographic())
-        {
-            moveWithOrtographicCamera();
-        }
-        else
-        {
-            moveWith3DCamera();
-        }
-    }
-
-    private void moveWithOrtographicCamera()
-    {
-        if (Input.GetButton("Run"))
-        {
-            moveDirection = new Vector3(-Input.GetAxis("Horizontal") * runSpeed, moveDirection.y, 0f);
-        }
-        else
-        {
-            moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, 0f);
-        }
-        //Ajustamos el movimiento del jugador en base al eje horizontal
-        
-
-        //Si esta en el suelo y se pulsa "Jump", ajustamos la direccion
-        if (characterController.isGrounded)
-        {
-            moveDirection.y = 0f;
-            if (Input.GetButtonDown("Jump"))
-            {
-                GameObject.Find("Jump").GetComponent<AudioSource>().Play();
-                moveDirection.y = jumpSpeed;
-            }
-        }
-
-        //Aplicamos la gravedad
-        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
-        characterController.Move(moveDirection * Time.deltaTime);
-
-        //Rotar al jugador
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
-        {
-            //    transform.rotation = Quaternion.Euler(0f, rotationPoint.transform.rotation.eulerAngles.y, 0f);
-            Quaternion playerNewRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, 0f));
-            playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, playerNewRotation, rotationSpeed * Time.deltaTime); //Para realizar suave el movimiento
-        }
-
-        //Actualizar animaciones
-        animator.SetBool("isGrounded", characterController.isGrounded || GameControl.isUsingPipe());
-        animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
+        moveWith3DCamera();
     }
 
     private void moveWith3DCamera()
