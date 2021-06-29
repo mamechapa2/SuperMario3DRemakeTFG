@@ -108,8 +108,6 @@ public class GameControl : MonoBehaviour
         perspectiveCamera = GameObject.FindGameObjectWithTag("SecondCamera").gameObject;
         orthographicCamera.GetComponent<Camera>().enabled = true;
         perspectiveCamera.GetComponent<Camera>().enabled = false;
-
-        GameObject.Find("LevelMusic").GetComponent<AudioSource>().Play();
     }
 
     // Update is called once per frame
@@ -147,6 +145,13 @@ public class GameControl : MonoBehaviour
 
     private IEnumerator restartGame()
     {
+        if (!GameControl.isOrthographic())
+        {
+            orthographicCamera.GetComponent<Camera>().enabled = !orthographicCamera.GetComponent<Camera>().enabled;
+            GameControl.orthographic = true;
+            perspectiveCamera.GetComponent<Camera>().enabled = !perspectiveCamera.GetComponent<Camera>().enabled;
+        }
+
         player.transform.LookAt(orthographicCamera.transform.position);
 
         player.GetComponent<PlayerControllerCharacterController>().enabled = false;
@@ -154,6 +159,7 @@ public class GameControl : MonoBehaviour
 
         GameControl.score = 0;
 
+        GameObject.Find("LevelMusic").GetComponent<AudioSource>().Stop();
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("GameOver").GetComponent<AudioSource>().Play();
 
@@ -171,6 +177,7 @@ public class GameControl : MonoBehaviour
 
         //player.transform.LookAt(orthographicCamera.transform.position.normalized);
         player.GetComponentInChildren<Animator>().SetBool("die", true);
+        GameObject.Find("LevelMusic").GetComponent<AudioSource>().Stop();
         GameObject.Find("Death").GetComponent<AudioSource>().Play();
 
         yield return new WaitForSeconds(2.7f);
