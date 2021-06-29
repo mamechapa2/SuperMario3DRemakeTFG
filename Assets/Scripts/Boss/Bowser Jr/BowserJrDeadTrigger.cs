@@ -10,6 +10,8 @@ public class BowserJrDeadTrigger : MonoBehaviour
     public GameObject explosionPrefab;
     public GameObject bossModelObject;
 
+    public GameObject[] ground;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player"))
@@ -22,6 +24,12 @@ public class BowserJrDeadTrigger : MonoBehaviour
     {
         switchOn.SetActive(false);
         switchOff.SetActive(true);
+        for (int i = 0; i < ground.Length; i++)
+        {
+            ground[i].SetActive(false);
+            yield return new WaitForSeconds(0.5f);
+        }
+        
         transform.parent.GetComponentInChildren<BowserJrCharacterController>().enabled = false;
         transform.parent.GetComponentInChildren<Animator>().SetBool("jump", false);
         transform.parent.GetComponentInChildren<Animator>().SetBool("defeat", true);

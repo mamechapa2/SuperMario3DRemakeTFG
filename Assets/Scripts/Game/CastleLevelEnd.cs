@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class LevelEnd : MonoBehaviour
+public class CastleLevelEnd : MonoBehaviour
 {
     private GameObject player;
     private bool end = false;
@@ -25,7 +24,6 @@ public class LevelEnd : MonoBehaviour
         if (end)
         {
             end = true;
-            player.GetComponent<CharacterController>().Move(new Vector3(-1 * Time.deltaTime * 10, 0, 0));
             if (!startedBefore)
             {
                 startedBefore = true;
@@ -36,29 +34,37 @@ public class LevelEnd : MonoBehaviour
 
     private IEnumerator changeLevel()
     {
+        //Reproducir la musica del final del nivel
         GameObject.Find("LevelEnd").GetComponent<AudioSource>().Play();
+
         yield return new WaitForSeconds(2f);
-        perspectiveCamera.GetComponent<CameraController3D>().enabled = false;
-        GameObject scoreDisplay = GameObject.Find("ScoreDisplay").gameObject;
-        //scoreDisplay.transform.localPosition = new Vector3(0, -6, 0);
-        scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 100;
+
+        //Poner el score mas grande y añadir el tiempo restante como puntuacion
+        GameObject.Find("ScoreDisplay").gameObject.GetComponent<TextMeshProUGUI>().fontSize = 100;
         GameControl.addScore((int)GameControl.internalTime);
+
         yield return new WaitForSeconds(6f);
+
+        //Cargar la siguiente escena
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        player.GetComponent<PlayerControllerCharacterController>().enabled = true;
-        perspectiveCamera.GetComponent<CameraController3D>().enabled = true;
-        //scoreDisplay.transform.localPosition = new Vector3(0, -60, 0);
-        scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 50;
+
+        //Devolver el score a su tamaño
+        GameObject.Find("ScoreDisplay").gameObject.GetComponent<TextMeshProUGUI>().fontSize = 50;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
+            //Parar la musica del nivel
             GameObject.Find("LevelMusic").GetComponent<AudioSource>().Stop();
+
+            //Activar el final
             end = true;
+
             player = other.gameObject;
-            player.GetComponent<PlayerControllerCharacterController>().enabled = false;
+
+            //Parar el tiempo
             GameControl.stopTimer = true;
         }
     }
