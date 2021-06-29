@@ -17,7 +17,7 @@ public class CameraController3D : MonoBehaviour
         player = GameObject.Find("PlayerCC").gameObject;
         transform.position = new Vector3(player.transform.position.x - offsetX, player.transform.position.y + offsetY, player.transform.position.z - offsetZ);
 
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
