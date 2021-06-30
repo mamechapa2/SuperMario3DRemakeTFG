@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
+    public GameObject optionsMenuObject;
     private void Start()
     {
         Cursor.visible = true;
@@ -19,5 +21,11 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("QuitGame");
         Application.Quit();
+    }
+
+    public void OptionsMenu()
+    {
+        optionsMenuObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 }
