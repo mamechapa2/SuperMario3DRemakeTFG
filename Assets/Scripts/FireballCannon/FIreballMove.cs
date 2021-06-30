@@ -15,6 +15,6 @@ public class FIreballMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * speed * Time.deltaTime);
+        transform.Translate(transform.right * speed * Time.deltaTime);
     }
 }
