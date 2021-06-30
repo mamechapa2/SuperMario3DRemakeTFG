@@ -36,13 +36,15 @@ public class PlayerControllerCharacterController : MonoBehaviour
     {
         if (Input.GetButton("Run"))
         {
-            moveDirection = ((transform.forward * -Input.GetAxis("Vertical")) + (transform.right * -Input.GetAxis("Horizontal"))) * runSpeed + transform.up * moveDirection.y;
-            
+            moveDirection = ((transform.right * -Input.GetAxis("Horizontal"))) * runSpeed + transform.up * moveDirection.y;
+            //moveDirection = ((transform.forward * -Input.GetAxis("Vertical")) + (transform.right * -Input.GetAxis("Horizontal"))) * runSpeed + transform.up * moveDirection.y;
+
             //moveDirection = new Vector3(-Input.GetAxis("Horizontal") * runSpeed, moveDirection.y, -Input.GetAxis("Vertical") * runSpeed);
         }
         else
         {
-            moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, -Input.GetAxis("Vertical") * moveSpeed);
+            moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, 0f);
+            //moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, -Input.GetAxis("Vertical") * moveSpeed);
         }
         //Ajustamos el movimiento del jugador en base a los ejes "Horizontal" y "Vertical"
 
