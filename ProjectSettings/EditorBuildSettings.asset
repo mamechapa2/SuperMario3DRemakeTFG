@@ -4,5 +4,44 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Game/MainMenu.unity
+    guid: 3c95dc67e9cc5004c9a9b7a70b5b2fa2
+  - enabled: 1
+    path: Assets/Scenes/Game/GameOverScene.unity
+    guid: 506b4fb73705896419d0ee35c9d9a626
+  - enabled: 1
+    path: Assets/Scenes/LevelPreload/Level1-1Preload.unity
+    guid: a5e2f947519d5244d8369d27b73a2af9
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1-1.unity
+    guid: 445723dab9e73014893f481971611312
+  - enabled: 1
+    path: Assets/Scenes/LevelPreload/Level1-2Preload.unity
+    guid: 4078bd425ed25274686f6ab9845611b1
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1-2.unity
+    guid: de2e98256728ea0468b4af73a56a0cda
+  - enabled: 1
+    path: Assets/Scenes/LevelPreload/Level1-3Preload.unity
+    guid: 9cd6ee2499162954faa9edf31082b68b
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1-3.unity
+    guid: bb5dcaaab128a4941a0a1e0482495136
+  - enabled: 1
+    path: Assets/Scenes/LevelPreload/Level1-4Preload.unity
+    guid: c8d713ecd93f70e4a8e282ba34afe8b6
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1-4.unity
+    guid: bd8db3656d8912f46ac883d1a1bbfa74
+  - enabled: 1
+    path: Assets/Scenes/LevelPreload/Level2-1Preload.unity
+    guid: 358f1020af086b644a43f1ea371b3982
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level2-1.unity
+    guid: 0154756e5e2ce50498da3cc418718d5b
+  - enabled: 1
+    path: Assets/Scenes/Game/EndScene.unity
+    guid: 89a6e62438b100d4aba4d127fc1ee27b
   m_configObjects: {}
