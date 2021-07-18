@@ -21,12 +21,14 @@ public class KoopaRightTrigger : MonoBehaviour
     {
         if (goLeft)
         {
+            //goLeft = false;
             rb.velocity = new Vector3(1 * moveSpeed, -9, 0);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("RIGHT COLISION CON: " + other.name);
         switch (other.tag)
         {
             case "Enemy":

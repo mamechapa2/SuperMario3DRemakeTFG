@@ -6696,15 +6696,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5526345533924892535, guid: adf71289c793cad46a3fe06479dae2fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -65.6
+      value: -60.6
       objectReference: {fileID: 0}
     - target: {fileID: 5526345533924892535, guid: adf71289c793cad46a3fe06479dae2fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.5
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 5526345533924892535, guid: adf71289c793cad46a3fe06479dae2fc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.12
+      value: 8.119999
       objectReference: {fileID: 0}
     - target: {fileID: 5526345533924892535, guid: adf71289c793cad46a3fe06479dae2fc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -39124,7 +39124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8761679516298319264, guid: 4bc45455cf645244784e469bcf12c4ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -103.47
+      value: -106.08
       objectReference: {fileID: 0}
     - target: {fileID: 8761679516298319264, guid: 4bc45455cf645244784e469bcf12c4ad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -90959,11 +90959,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1046492192317534446, guid: 64c3f2870c5a40d4181648318825baf6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9278063
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1046492192317534446, guid: 64c3f2870c5a40d4181648318825baf6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.37306222
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1046492192317534446, guid: 64c3f2870c5a40d4181648318825baf6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -90975,7 +90975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1046492192317534447, guid: 64c3f2870c5a40d4181648318825baf6, type: 3}
       propertyPath: offsetY
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1046492192317534447, guid: 64c3f2870c5a40d4181648318825baf6, type: 3}
       propertyPath: offsetZ

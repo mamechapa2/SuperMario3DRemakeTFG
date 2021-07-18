@@ -14,7 +14,6 @@ public class PlayerControllerCharacterController : MonoBehaviour
 
     private Animator animator;
 
-    public Transform rotationPoint;
     public float rotationSpeed;
 
     public GameObject playerModel;
@@ -51,7 +50,6 @@ public class PlayerControllerCharacterController : MonoBehaviour
         //Si esta en el suelo y se pulsa "Jump", ajustamos la direccion
         if (characterController.isGrounded)
         {
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             moveDirection.y = 0f;
             if (Input.GetButton("Jump"))
             {
@@ -64,7 +62,7 @@ public class PlayerControllerCharacterController : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
 
         //Mover al jugador en la direccion de la camara
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        if (Input.GetAxisRaw("Horizontal") != 0)
         {
             //    transform.rotation = Quaternion.Euler(0f, rotationPoint.transform.rotation.eulerAngles.y, 0f);
             Quaternion playerNewRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
