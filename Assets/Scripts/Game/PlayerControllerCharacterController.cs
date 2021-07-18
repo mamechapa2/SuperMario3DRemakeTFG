@@ -51,6 +51,7 @@ public class PlayerControllerCharacterController : MonoBehaviour
         //Si esta en el suelo y se pulsa "Jump", ajustamos la direccion
         if (characterController.isGrounded)
         {
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             moveDirection.y = 0f;
             if (Input.GetButton("Jump"))
             {
