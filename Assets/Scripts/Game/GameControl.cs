@@ -256,15 +256,15 @@ public class GameControl : MonoBehaviour
 
     private IEnumerator powerUpCollectAnimation()
     {
-        player.transform.localScale = new Vector3(1, 1, 1);
+        player.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
         yield return new WaitForSeconds(0.05f);
         player.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
         yield return new WaitForSeconds(0.05f);
-        player.transform.localScale = new Vector3(1, 1, 1);
+        player.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
         yield return new WaitForSeconds(0.05f);
         player.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
         yield return new WaitForSeconds(0.05f);
-        player.transform.localScale = new Vector3(1, 1, 1);
+        player.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
     }
 
     public static void damageReceived()
@@ -285,11 +285,11 @@ public class GameControl : MonoBehaviour
         GameObject.Find("PipeEntry").GetComponent<AudioSource>().Play();
         player.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
         yield return new WaitForSeconds(0.05f);
-        player.transform.localScale = new Vector3(1, 1, 1);
+        player.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
         yield return new WaitForSeconds(0.05f);
         player.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
         yield return new WaitForSeconds(0.05f);
-        player.transform.localScale = new Vector3(1, 1, 1);
+        player.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
         yield return new WaitForSeconds(0.05f);
         player.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
     }
