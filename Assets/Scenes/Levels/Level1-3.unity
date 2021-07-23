@@ -7799,6 +7799,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Koopa (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 811394765421838176, guid: ad05f88a0ae213a4684f1f184e75fb14, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 811394765421838177, guid: ad05f88a0ae213a4684f1f184e75fb14, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -58047,6 +58051,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Koopa (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 811394765421838176, guid: ad05f88a0ae213a4684f1f184e75fb14, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 811394765421838177, guid: ad05f88a0ae213a4684f1f184e75fb14, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -81640,6 +81648,10 @@ PrefabInstance:
     - target: {fileID: 811394765421838176, guid: ad05f88a0ae213a4684f1f184e75fb14, type: 3}
       propertyPath: m_Name
       value: Koopa
+      objectReference: {fileID: 0}
+    - target: {fileID: 811394765421838176, guid: ad05f88a0ae213a4684f1f184e75fb14, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 811394765421838177, guid: ad05f88a0ae213a4684f1f184e75fb14, type: 3}
       propertyPath: m_RootOrder
