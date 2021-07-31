@@ -203,6 +203,11 @@ public class GameControl : MonoBehaviour
     {
         internalCoins++;
         GameControl.addScore(100);
+        if (internalCoins == 100)
+        {
+            internalCoins = 0;
+            increaseLives();
+        }
         GameObject.Find("CoinPickUp").GetComponent<AudioSource>().Play();
     }
 

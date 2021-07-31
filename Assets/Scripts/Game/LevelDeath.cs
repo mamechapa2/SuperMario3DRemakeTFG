@@ -10,10 +10,10 @@ public class LevelDeath : MonoBehaviour
         {
             if (GameControl.isBigMario())
             {
-                GameControl.decreaseLives();
+                GameControl.damageReceived();
             }
 
-            GameControl.decreaseLives();
+            GameControl.damageReceived();
         }
     }
 }
