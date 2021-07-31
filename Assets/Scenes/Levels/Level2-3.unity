@@ -20131,7 +20131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600279384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.57, y: 5.3, z: -0.9}
+  m_LocalPosition: {x: -52.57, y: 4.3, z: -0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 465266328}
@@ -37523,7 +37523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3904499499845200808, guid: 83554e4e758c3854c91315d2c28e2e95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.1
+      value: -1.0999999
       objectReference: {fileID: 0}
     - target: {fileID: 3904499499845200808, guid: 83554e4e758c3854c91315d2c28e2e95, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37567,11 +37567,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3904499499845200823, guid: 83554e4e758c3854c91315d2c28e2e95, type: 3}
       propertyPath: waveHeight
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3904499499845200823, guid: 83554e4e758c3854c91315d2c28e2e95, type: 3}
       propertyPath: waveLength
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904499499845200823, guid: 83554e4e758c3854c91315d2c28e2e95, type: 3}
+      propertyPath: waveFrequency
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83554e4e758c3854c91315d2c28e2e95, type: 3}
