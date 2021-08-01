@@ -11,12 +11,12 @@ public class LevelEnd : MonoBehaviour
     private bool end = false;
     private bool startedBefore = false;
 
-    private GameObject perspectiveCamera;
+    private GameObject cameraObject;
 
     // Start is called before the first frame update
     void Start()
     {
-        perspectiveCamera = GameObject.FindGameObjectWithTag("SecondCamera").gameObject;
+        cameraObject = GameObject.FindGameObjectWithTag("SecondCamera").gameObject;
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class LevelEnd : MonoBehaviour
     {
         GameObject.Find("LevelEnd").GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(2f);
-        perspectiveCamera.GetComponent<CameraController3D>().enabled = false;
+        cameraObject.GetComponent<CameraController3D>().enabled = false;
         GameObject scoreDisplay = GameObject.Find("ScoreDisplay").gameObject;
         //scoreDisplay.transform.localPosition = new Vector3(0, -6, 0);
         scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 100;
@@ -46,7 +46,7 @@ public class LevelEnd : MonoBehaviour
         yield return new WaitForSeconds(6f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         player.GetComponent<PlayerControllerCharacterController>().enabled = true;
-        perspectiveCamera.GetComponent<CameraController3D>().enabled = true;
+        cameraObject.GetComponent<CameraController3D>().enabled = true;
         //scoreDisplay.transform.localPosition = new Vector3(0, -60, 0);
         scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 50;
     }

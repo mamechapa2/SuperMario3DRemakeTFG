@@ -28,7 +28,7 @@ public class DestroyObjects : MonoBehaviour
             Destroy(objectToDelete);
         }catch(NullReferenceException e)
         {
-            Debug.Log("Juego iniciado por primera vez");
+            Debug.Log("Juego iniciado por primera vez: " + e.ToString());
         }
 
         

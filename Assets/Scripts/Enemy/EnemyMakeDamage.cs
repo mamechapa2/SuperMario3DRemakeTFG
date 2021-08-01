@@ -6,18 +6,13 @@ public class EnemyMakeDamage : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        switch (other.tag)
+        if(other.tag.Equals("Player"))
         {
-            case "Player":
-                GetComponent<BoxCollider>().enabled = false;
+                GetComponent<Collider>().enabled = false;
+
                 GameControl.damageReceived();
 
                 StartCoroutine(activateCollider());
-                break;
-            default:
-                Debug.Log(this.name + " asdasd " + other.name);
-                transform.parent.gameObject.GetComponentInParent<EnemyMove2D>().direction = !transform.parent.gameObject.GetComponentInParent<EnemyMove2D>().direction;
-                break;
         }
     }
 
@@ -25,6 +20,6 @@ public class EnemyMakeDamage : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
-        GetComponent<BoxCollider>().enabled = true;
+        GetComponent<Collider>().enabled = true;
     }
 }

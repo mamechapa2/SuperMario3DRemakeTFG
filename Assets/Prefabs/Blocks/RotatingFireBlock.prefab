@@ -253,6 +253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5621560854998223359, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
 --- !u!4 &5769237113171082960 stripped
@@ -314,6 +318,10 @@ PrefabInstance:
     - target: {fileID: 5621560854998223357, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
       propertyPath: m_Name
       value: Fireball (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621560854998223359, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
@@ -377,6 +385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5621560854998223359, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
 --- !u!4 &5769237112936495659 stripped
@@ -438,6 +450,10 @@ PrefabInstance:
     - target: {fileID: 5621560854998223357, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
       propertyPath: m_Name
       value: Fireball (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621560854998223359, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
@@ -501,6 +517,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5621560854998223359, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
 --- !u!4 &5769237112766190818 stripped
@@ -563,6 +583,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireball (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5621560854998223359, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
 --- !u!4 &5769237112543163715 stripped
@@ -624,6 +648,10 @@ PrefabInstance:
     - target: {fileID: 5621560854998223357, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
       propertyPath: m_Name
       value: Fireball
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621560854998223359, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f35ecf38b71cec438ae9bbe97bc6831, type: 3}

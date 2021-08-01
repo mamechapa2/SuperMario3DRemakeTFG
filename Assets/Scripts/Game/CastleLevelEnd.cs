@@ -10,12 +10,10 @@ public class CastleLevelEnd : MonoBehaviour
     private bool end = false;
     private bool startedBefore = false;
 
-    private GameObject perspectiveCamera;
-
     // Start is called before the first frame update
     void Start()
     {
-        perspectiveCamera = GameObject.FindGameObjectWithTag("SecondCamera").gameObject;
+
     }
 
     // Update is called once per frame
