@@ -25,13 +25,22 @@ public class CreateStartLevel : MonoBehaviour
         Vector3 pos = new Vector3(0, 0, 0);
         int randomNumberPrefab;
         int lastRandomNumber = 0;
+        int notRepeat = numPrefabs/2 + 1;
+        Queue<int> lastRandomNumbers = new Queue<int>(notRepeat);
+        for (int i = 0; i < notRepeat; i++)
+        {
+            lastRandomNumbers.Enqueue(0);
+        }
 
         for (int i = 0; i < levelLenght; i++)
         {
             do
             {
                 randomNumberPrefab = Random.Range(1, numPrefabs + 1);
-            } while (lastRandomNumber == randomNumberPrefab);
+            } while (lastRandomNumbers.Contains(randomNumberPrefab));
+
+            lastRandomNumbers.Dequeue();
+            lastRandomNumbers.Enqueue(randomNumberPrefab);
 
             Instantiate(Resources.Load(randomNumberPrefab.ToString()), pos, Quaternion.identity);
             pos.x += -10;
