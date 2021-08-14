@@ -24,7 +24,6 @@ public class CreateStartLevel : MonoBehaviour
 
         Vector3 pos = new Vector3(0, 0, 0);
         int randomNumberPrefab;
-        int lastRandomNumber = 0;
         int notRepeat = numPrefabs/2 + 1;
         Queue<int> lastRandomNumbers = new Queue<int>(notRepeat);
         for (int i = 0; i < notRepeat; i++)
@@ -44,8 +43,6 @@ public class CreateStartLevel : MonoBehaviour
 
             Instantiate(Resources.Load(randomNumberPrefab.ToString()), pos, Quaternion.identity);
             pos.x += -10;
-
-            lastRandomNumber = randomNumberPrefab;
         }
 
         Instantiate(Resources.Load("LevelEnd"), pos, Quaternion.identity);
