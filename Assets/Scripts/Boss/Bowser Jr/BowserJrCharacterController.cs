@@ -24,10 +24,6 @@ public class BowserJrCharacterController : MonoBehaviour
         {
             StartCoroutine(jump());
         }
-        else
-        {
-
-        }
     }
 
     private IEnumerator jump()

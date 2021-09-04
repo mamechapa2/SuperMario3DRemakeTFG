@@ -36,18 +36,12 @@ public class PlayerControllerCharacterController : MonoBehaviour
         if (Input.GetButton("Run"))
         {
             moveDirection = ((transform.right * -Input.GetAxis("Horizontal"))) * runSpeed + transform.up * moveDirection.y;
-            //moveDirection = ((transform.forward * -Input.GetAxis("Vertical")) + (transform.right * -Input.GetAxis("Horizontal"))) * runSpeed + transform.up * moveDirection.y;
-
-            //moveDirection = new Vector3(-Input.GetAxis("Horizontal") * runSpeed, moveDirection.y, -Input.GetAxis("Vertical") * runSpeed);
         }
         else
         {
             moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, 0f);
-            //moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, -Input.GetAxis("Vertical") * moveSpeed);
         }
-        //Ajustamos el movimiento del jugador en base a los ejes "Horizontal" y "Vertical"
 
-        //Si esta en el suelo y se pulsa "Jump", ajustamos la direccion
         if (characterController.isGrounded)
         {
             moveDirection.y = 0f;
@@ -57,19 +51,16 @@ public class PlayerControllerCharacterController : MonoBehaviour
             }
         }
 
-        //Aplicamos la gravedad
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         characterController.Move(moveDirection * Time.deltaTime);
 
-        //Mover al jugador en la direccion de la camara
+
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
-            //    transform.rotation = Quaternion.Euler(0f, rotationPoint.transform.rotation.eulerAngles.y, 0f);
             Quaternion playerNewRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
             playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, playerNewRotation, rotationSpeed * Time.deltaTime); //Para realizar suave el movimiento
         }
 
-        //Actualizar animaciones
         animator.SetBool("isGrounded", characterController.isGrounded);
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical")));
     }

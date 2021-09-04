@@ -12,7 +12,6 @@ public class BowserJrDeadTrigger : MonoBehaviour
 
     public GameObject[] ground;
     public GameObject endBarrier;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player"))
@@ -20,7 +19,6 @@ public class BowserJrDeadTrigger : MonoBehaviour
             StartCoroutine(wait());
         }
     }
-
     private IEnumerator wait()
     {
         switchOn.SetActive(false);

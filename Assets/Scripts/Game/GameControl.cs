@@ -52,16 +52,13 @@ public class GameControl : MonoBehaviour
     private static GameControl gameControl = null;
     private void Awake()
     {
-        Debug.Log("Awake GameControl");
         if (gameControl == null)
         {
             gameControl = this;
-            Debug.Log("Asignado");
             DontDestroyOnLoad(gameObject);
         }
         else if (gameControl != this)
         {
-            Debug.Log("Eliminado");
             Destroy(this);
         }
     }
@@ -69,7 +66,6 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Started GameControl");
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
         
         //Vidas
@@ -154,7 +150,6 @@ public class GameControl : MonoBehaviour
         player.GetComponent<PlayerControllerCharacterController>().enabled = false;
         player.GetComponent<CharacterController>().enabled = false;
 
-        //player.transform.LookAt(orthographicCamera.transform.position.normalized);
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("LevelMusic").GetComponent<AudioSource>().Stop();
         GameObject.Find("Death").GetComponent<AudioSource>().Play();
@@ -176,8 +171,6 @@ public class GameControl : MonoBehaviour
 
         if (internalLives <= 0)
         {
-            //TODO FIN DE JUEGO
-            Debug.Log("FIN DEL JUEGO");
             endGame = true;
         }
         else
@@ -256,7 +249,6 @@ public class GameControl : MonoBehaviour
             makeMarioBigger = true;
             GameObject.Find("RedMushroomPickUp").GetComponent<AudioSource>().Play();
         }
-        
     }
 
     private IEnumerator powerUpCollectAnimation()
@@ -372,6 +364,7 @@ public class GameControl : MonoBehaviour
         internalTime = 300;
 
         //Score
+        score = 0;
 
         //Powerup
         internalBigMario = false;
