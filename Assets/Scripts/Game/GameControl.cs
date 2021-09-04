@@ -22,6 +22,7 @@ public class GameControl : MonoBehaviour
     //Estrellas
     private static int internalStars;
     private GameObject starsDisplay;
+    public static int levelStars;
 
     //Timer
     public int startingTime = 300;
@@ -79,6 +80,7 @@ public class GameControl : MonoBehaviour
         //Estrellas
         starsDisplay = GameObject.Find("StarsDisplay").gameObject;
         internalStars = 0;
+        levelStars = 0;
 
         //Timer
         internalTime = startingTime;
@@ -153,6 +155,7 @@ public class GameControl : MonoBehaviour
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("LevelMusic").GetComponent<AudioSource>().Stop();
         GameObject.Find("Death").GetComponent<AudioSource>().Play();
+        internalStars -= levelStars;
 
         yield return new WaitForSeconds(2.7f);
 
@@ -213,6 +216,7 @@ public class GameControl : MonoBehaviour
     public static void increaseStars()
     {
         internalStars++;
+        levelStars++;
         GameControl.addScore(200);
         GameObject.Find("StarPickUp").GetComponent<AudioSource>().Play();
     }

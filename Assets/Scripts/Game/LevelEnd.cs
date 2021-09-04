@@ -49,6 +49,7 @@ public class LevelEnd : MonoBehaviour
         cameraObject.GetComponent<CameraController3D>().enabled = true;
         //scoreDisplay.transform.localPosition = new Vector3(0, -60, 0);
         scoreDisplay.GetComponent<TextMeshProUGUI>().fontSize = 50;
+        GameControl.levelStars = 0;
     }
 
     private void OnTriggerEnter(Collider other)
