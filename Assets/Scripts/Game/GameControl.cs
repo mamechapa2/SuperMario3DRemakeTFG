@@ -10,6 +10,7 @@ public class GameControl : MonoBehaviour
 {
     private static GameObject player;
 
+    //Variables necesarias para el control del juego
     //Vidas
     public static int startingLives = 3;
     private static int internalLives;
@@ -22,6 +23,7 @@ public class GameControl : MonoBehaviour
     //Estrellas
     private static int internalStars;
     private GameObject starsDisplay;
+    public static int levelStars;
 
     //Timer
     public int startingTime = 300;
@@ -52,16 +54,14 @@ public class GameControl : MonoBehaviour
     private static GameControl gameControl = null;
     private void Awake()
     {
-        Debug.Log("Awake GameControl");
+        //Destruye otros objetos iguales a este, se queda con el primero de ellos
         if (gameControl == null)
         {
             gameControl = this;
-            Debug.Log("Asignado");
             DontDestroyOnLoad(gameObject);
         }
         else if (gameControl != this)
         {
-            Debug.Log("Eliminado");
             Destroy(this);
         }
     }
@@ -69,7 +69,6 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Started GameControl");
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
         
         //Vidas
@@ -83,6 +82,7 @@ public class GameControl : MonoBehaviour
         //Estrellas
         starsDisplay = GameObject.Find("StarsDisplay").gameObject;
         internalStars = 0;
+        levelStars = 0;
 
         //Timer
         internalTime = startingTime;
@@ -102,20 +102,24 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Actualizar timer
         if (!stopTimer)
         {
             updateTimer();
         }
 
+        //Actualizar interfaz y la escala de Mario, si recogio powerup o lo perdio
         updateDisplays();
         updateMarioScale();
 
+        //Si el juego ha acabado, inicia la corutina (perdido todas las vidas)
         if (endGame)
         {
             endGame = false;
             StartCoroutine(restartGame());
         }
 
+        //Si ha perdido una unica vida, pero el juego continua
         if (restart)
         {
             restart = false;
@@ -123,6 +127,7 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    //Actualiza la interfaz
     private void updateDisplays()
     {
         livesDisplay.GetComponent <TextMeshProUGUI>().text = "" + internalLives;
@@ -131,6 +136,7 @@ public class GameControl : MonoBehaviour
         timeDisplay.GetComponent<TextMeshProUGUI>().text = "" + (int)internalTime;
     }
 
+    //Reinicia por completo el juego
     private IEnumerator restartGame()
     {
         player.GetComponent<PlayerControllerCharacterController>().enabled = false;
@@ -147,6 +153,7 @@ public class GameControl : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    //Reinicia el nivel
     private IEnumerator restartLevel()
     {
         stopTimer = true;
@@ -154,10 +161,10 @@ public class GameControl : MonoBehaviour
         player.GetComponent<PlayerControllerCharacterController>().enabled = false;
         player.GetComponent<CharacterController>().enabled = false;
 
-        //player.transform.LookAt(orthographicCamera.transform.position.normalized);
         player.GetComponentInChildren<Animator>().SetBool("die", true);
         GameObject.Find("LevelMusic").GetComponent<AudioSource>().Stop();
         GameObject.Find("Death").GetComponent<AudioSource>().Play();
+        internalStars -= levelStars;
 
         yield return new WaitForSeconds(2.7f);
 
@@ -176,8 +183,6 @@ public class GameControl : MonoBehaviour
 
         if (internalLives <= 0)
         {
-            //TODO FIN DE JUEGO
-            Debug.Log("FIN DEL JUEGO");
             endGame = true;
         }
         else
@@ -220,6 +225,7 @@ public class GameControl : MonoBehaviour
     public static void increaseStars()
     {
         internalStars++;
+        levelStars++;
         GameControl.addScore(200);
         GameObject.Find("StarPickUp").GetComponent<AudioSource>().Play();
     }
@@ -256,7 +262,6 @@ public class GameControl : MonoBehaviour
             makeMarioBigger = true;
             GameObject.Find("RedMushroomPickUp").GetComponent<AudioSource>().Play();
         }
-        
     }
 
     private IEnumerator powerUpCollectAnimation()
@@ -356,7 +361,6 @@ public class GameControl : MonoBehaviour
     //Reset
     public static void resetGame()
     {
-        Debug.Log("Started GameControl");
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
 
         //Vidas
@@ -372,6 +376,7 @@ public class GameControl : MonoBehaviour
         internalTime = 300;
 
         //Score
+        score = 0;
 
         //Powerup
         internalBigMario = false;

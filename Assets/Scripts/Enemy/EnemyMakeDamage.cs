@@ -8,11 +8,13 @@ public class EnemyMakeDamage : MonoBehaviour
     {
         if(other.tag.Equals("Player"))
         {
-                GetComponent<Collider>().enabled = false;
+            //Desactivamos el collider temporalmente
+            GetComponent<Collider>().enabled = false;
 
-                GameControl.damageReceived();
+            GameControl.damageReceived();
 
-                StartCoroutine(activateCollider());
+            //Activamos la corutina para reactivar el collider
+            StartCoroutine(activateCollider());
         }
     }
 

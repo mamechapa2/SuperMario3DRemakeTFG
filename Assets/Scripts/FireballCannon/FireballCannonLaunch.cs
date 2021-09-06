@@ -8,15 +8,10 @@ public class FireballCannonLaunch : MonoBehaviour
     public Transform position;
 
     private bool create = true;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        //Si tiene que lanzar una bola, inicia la corutina
         if (create)
         {
             StartCoroutine(instantiatePrefab());
@@ -26,8 +21,9 @@ public class FireballCannonLaunch : MonoBehaviour
     private IEnumerator instantiatePrefab()
     {
         create = false;
-        Instantiate(prefab, position);
 
+        //Instancia el prefab
+        Instantiate(prefab, position);
         yield return new WaitForSeconds(5f);
 
         create = true;

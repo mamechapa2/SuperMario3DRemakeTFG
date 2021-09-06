@@ -20,13 +20,11 @@ public class BowserJrCharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Si no esta saltando
         if (!jumping)
         {
+            //Inicia la corutina de salto
             StartCoroutine(jump());
-        }
-        else
-        {
-
         }
     }
 

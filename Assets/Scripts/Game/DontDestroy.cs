@@ -7,7 +7,7 @@ public class DontDestroy : MonoBehaviour
     public string id;
     private void Awake()
     {
-        id = name + transform.position.ToString();
+        id = name;
     }
 
     // Start is called before the first frame update
@@ -26,5 +26,4 @@ public class DontDestroy : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
-
 }

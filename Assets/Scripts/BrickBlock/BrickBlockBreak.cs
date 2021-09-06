@@ -13,21 +13,28 @@ public class BrickBlockBreak : MonoBehaviour
     public Animator brickAnimator;
     private void OnTriggerEnter(Collider other)
     {
+        //Si Mario tiene un powerup
         if (GameControl.isBigMario())
         {
+            //Cambiamos el modelo del bloque y reproducimos el sonido
             GameObject.Find("BrickBreak").GetComponent<AudioSource>().Play();
             GetComponent<BoxCollider>().enabled = false;
             colliderBrick.enabled = false;
             brick.SetActive(false);
             breakBrick.SetActive(true);
+
+            //Si tiene moneda, la añadimos
             if (containsCoin)
             {
                 GameControl.increaseCoins();
             }
+
+            //Eliminamos el bloque
             StartCoroutine(destroyBlock());
         }
         else
         {
+            //Si Mario es pequeño el bloque "bota"
             GameObject.Find("BrickNotBreak").GetComponent<AudioSource>().Play();
             brickAnimator.SetBool("bounce", true);
             StartCoroutine(stopBouncing());

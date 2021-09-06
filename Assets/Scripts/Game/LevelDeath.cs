@@ -8,6 +8,7 @@ public class LevelDeath : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
+            //Si Mario tiene un powerup le quita dos vidas, sino solo una
             if (GameControl.isBigMario())
             {
                 GameControl.damageReceived();

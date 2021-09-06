@@ -14,11 +14,11 @@ public class EnemyMove2D : MonoBehaviour
 
     private float currentPoint;
 
-    [Header("Tick: right | Untick: left")]
     public bool direction = true;
 
     private void Start()
     {
+        //Obtenemos los puntos izquierdo y derecho
         internalResetPointRight = resetPointRighta.transform.position.x;
         internalResetPointLeft = resetPointLefta.transform.position.x;
     }
@@ -26,6 +26,7 @@ public class EnemyMove2D : MonoBehaviour
     {
         currentPoint = transform.position.x;
 
+        //Modificamos hacia donde mira el enemigo en funcion de para donde se esta movimiendo
         if (direction)
         {
             transform.LookAt(resetPointRighta.transform.position);
@@ -35,6 +36,7 @@ public class EnemyMove2D : MonoBehaviour
             transform.LookAt(resetPointLefta.transform.position);
         }
 
+        //Si llega a uno de los extremos, cambiamos la direccion del movimiento
         if (currentPoint > internalResetPointRight)
         {
             direction = false;
@@ -45,15 +47,15 @@ public class EnemyMove2D : MonoBehaviour
             direction = true;
         }
 
+        //Movemos el enemigo
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
     private void OnColliderEnter(Collider other)
     {
-        Debug.Log("ASDASDASDASDASDASDASDASDADADA");
+        //Si el enemigo choca contra otro enemigo o cualquier otro objeto, se da la vuelta
         if (!other.tag.Equals("Player"))
         {
-            Debug.Log(other.name);
             direction = !direction;
         }
     }

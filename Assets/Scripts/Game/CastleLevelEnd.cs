@@ -10,15 +10,10 @@ public class CastleLevelEnd : MonoBehaviour
     private bool end = false;
     private bool startedBefore = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
+        //Si se ha llegado al final y no se habia llegado antes
         if (end)
         {
             end = true;
