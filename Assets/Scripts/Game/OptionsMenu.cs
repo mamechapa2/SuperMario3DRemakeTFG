@@ -16,6 +16,7 @@ public class OptionsMenu : MonoBehaviour
     public GameObject optionsMenuObject;
     private void Start()
     {
+        //Creamos el listado de resoluciones
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -33,6 +34,8 @@ public class OptionsMenu : MonoBehaviour
                 currentResolutionIndex = i;
             }
         }
+
+        //Lo añadimos al desplegable
         resolutionDropdown.AddOptions(resolutionsList);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();

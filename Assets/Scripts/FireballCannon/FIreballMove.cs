@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class FIreballMove : MonoBehaviour
 {
-
     public float speed = 6;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        //Mueve la bola a una velocidad
         transform.Translate(transform.right * speed * Time.deltaTime);
     }
 }

@@ -35,32 +35,33 @@ public class PlayerControllerCharacterController : MonoBehaviour
     {
         if (Input.GetButton("Run"))
         {
-            moveDirection = ((transform.right * -Input.GetAxis("Horizontal"))) * runSpeed + transform.up * moveDirection.y;
+            moveDirection = ((transform.right * -Input.GetAxis("Horizontal"))) * runSpeed + transform.up * moveDirection.y; //Movimiento corriendo
         }
         else
         {
-            moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, 0f);
+            moveDirection = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, 0f); //Movimiento normal
         }
 
-        if (characterController.isGrounded)
+        if (characterController.isGrounded) //Si esta en el suelo
         {
             moveDirection.y = 0f;
-            if (Input.GetButton("Jump"))
+            if (Input.GetButton("Jump")) //Y pulsa saltar
             {
-                moveDirection.y = jumpSpeed;
+                moveDirection.y = jumpSpeed; //Realiza el salto actualizando el vector de movimiento
             }
         }
 
-        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime); //Añadimos la gravedad
         characterController.Move(moveDirection * Time.deltaTime);
 
-
+        //Girar el modelo del personaje segun la direccion
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
             Quaternion playerNewRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
             playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, playerNewRotation, rotationSpeed * Time.deltaTime); //Para realizar suave el movimiento
         }
 
+        //Activar las animaciones
         animator.SetBool("isGrounded", characterController.isGrounded);
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical")));
     }

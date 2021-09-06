@@ -14,7 +14,6 @@ public class LiftMoveVertical : MonoBehaviour
 
     private float currentPoint;
 
-    [Header("Tick: right | Untick: left")]
     public bool direction = true;
     // Start is called before the first frame update
     void Start()

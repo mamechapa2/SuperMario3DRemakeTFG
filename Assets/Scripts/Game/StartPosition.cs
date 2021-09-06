@@ -13,10 +13,4 @@ public class StartPosition : MonoBehaviour
         player.transform.position = transform.position;
         player.GetComponent<CharacterController>().enabled = true;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

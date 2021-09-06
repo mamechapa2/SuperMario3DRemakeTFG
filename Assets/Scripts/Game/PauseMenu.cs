@@ -10,13 +10,14 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Si se pulsa escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (paused)
+            if (paused) //Si ya estaba pausado, reactiva el juego
             {
                 resumeGame();
             }
-            else
+            else //Sino lo pausa
             {
                 pauseGame();
             }
@@ -25,16 +26,26 @@ public class PauseMenu : MonoBehaviour
 
     private void resumeGame()
     {
+        //Reactiva la musica
         GameObject.Find("LevelMusic").GetComponent<AudioSource>().Play();
+
+        //Desactiva el objeto del menu
         pauseMenuObject.SetActive(false);
+
+        //Cambia la escala de tiempo a la normal
         Time.timeScale = 1f;
         paused = false;
     }
 
     private void pauseGame()
     {
+        //Pausa la musica
         GameObject.Find("LevelMusic").GetComponent<AudioSource>().Pause();
+
+        //Activa el objeto del menu
         pauseMenuObject.SetActive(true);
+
+        //Cambia la escala de tiempo a 0 para pausar el tiempo
         Time.timeScale = 0f;
         paused = true;
     }
@@ -44,21 +55,20 @@ public class PauseMenu : MonoBehaviour
         //Cursor.visible = true;
         //Cursor.lockState = CursorLockMode.None;
     }
+
+    //Opciones de los botones del menu
     public void resume()
     {
-        Debug.Log("Resume");
         resumeGame();
     }
 
     public void quit()
     {
-        Debug.Log("QuitGame");
         Application.Quit();
     }
 
     public void mainMenu()
     {
-        Debug.Log("MainMenu");
         pauseMenuObject.SetActive(false);
         Time.timeScale = 1f;
         paused = false;

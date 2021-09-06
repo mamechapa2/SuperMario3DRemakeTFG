@@ -18,9 +18,9 @@ public class CameraController3D : MonoBehaviour
         transform.position = new Vector3(player.transform.position.x - offsetX, player.transform.position.y + offsetY, player.transform.position.z - offsetZ);
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
+        //Actuliza la posicion de la camara respecto la del jugador, usando los offset si los hubiera
         transform.position = new Vector3(player.transform.position.x - offsetX, player.transform.position.y + offsetY, player.transform.position.z - offsetZ);
     }
 }

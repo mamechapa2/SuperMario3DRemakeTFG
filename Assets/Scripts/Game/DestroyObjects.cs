@@ -8,7 +8,7 @@ public class DestroyObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //Elimina todos los objetos que se pasan entre escenas
         try
         {
             GameControl.resetGame();
@@ -28,15 +28,7 @@ public class DestroyObjects : MonoBehaviour
             Destroy(objectToDelete);
         }catch(NullReferenceException e)
         {
-            Debug.Log("Juego iniciado por primera vez: " + e.ToString());
+            Debug.Log("Juego iniciado por primera vez: " + e.ToString()); //Si es la primera vez que se inicia, fallará
         }
-
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

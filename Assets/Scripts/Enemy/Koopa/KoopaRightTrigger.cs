@@ -10,25 +10,17 @@ public class KoopaRightTrigger : MonoBehaviour
 
 
     public float moveSpeed = 18;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (goLeft)
         {
-            //goLeft = false;
             rb.velocity = new Vector3(1 * moveSpeed, -9, 0);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("RIGHT COLISION CON: " + other.name);
         switch (other.tag)
         {
             case "Enemy":
@@ -42,7 +34,6 @@ public class KoopaRightTrigger : MonoBehaviour
                 goLeft = true;
                 leftTrigger.GetComponent<KoopaLeftTrigger>().goRight = false;
                 break;
-
         }
     }
 }

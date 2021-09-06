@@ -15,6 +15,8 @@ public class LevelLoad : MonoBehaviour
     private IEnumerator loadLevel()
     {
         yield return new WaitForSeconds(2f);
+
+        //Carga la escena, reinicia el tiempo y reactiva el timer
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         GameControl.internalTime = 300;
         GameControl.stopTimer = false;

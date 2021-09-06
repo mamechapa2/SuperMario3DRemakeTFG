@@ -9,18 +9,12 @@ public class KoopaLeftTrigger : MonoBehaviour
     public GameObject rightTrigger;
 
     public float moveSpeed = 18;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
     {
         if (goRight)
         {
-            //goRight = true;
             rb.velocity = new Vector3(-1 * moveSpeed, -9, 0);
         }
     }
